@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+        <meta charset="utf-8" />
+        <title>"확률"</title>
+        <link rel="stylesheet" href="https://freeeebie.github.io/theme/css/main.css" />
+        <link href="https://freeeebie.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Log Atom Feed" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://freeeebie.github.io/">Log </a></h1>
+                <nav><ul>
+                    <li class="active"><a href="https://freeeebie.github.io/category/misc.html">misc</a></li>
+                    <li><a href="https://freeeebie.github.io/category/test.html">Test</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="https://freeeebie.github.io/hwagryul.html" rel="bookmark"
+           title="Permalink to "확률"">"확률"</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2016-09-17T00:27:19+09:00">
+                Published: 토 17 9월 2016
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://freeeebie.github.io/author/freeeebie.html">freeeebie</a>
+        </address>
+<p>In <a href="https://freeeebie.github.io/category/misc.html">misc</a>.</p>
+<p>tags: <a href="https://freeeebie.github.io/tag/math.html">&#34;Math&#34;</a> </p>
+</footer><!-- /.post-info -->      <h1>확률분포</h1>
+<h2>Random Variable(확률변수)</h2>
+<p>정의  </p>
+<p>$$ X:\Omega\Rightarrow R $$<br />
+X: 함수</p>
+<p>이산확률변수<br />
+$P(X=k)= P({w:X(w)=k})$</p>
+<h2>Joint probability(결합확률)</h2>
+<ul>
+<li>확률질량함수<br />
+이산데이터에 대하여 누적 확률  </li>
+<li>누적분포함수 (CDF)<br />
+    확률값을 적분한 것. 1에 수렴 </li>
+<li>확률밀도함수<br />
+누적분포를 미분한 것 </li>
+</ul>
+<h2>Maginary probability(주변확률)</h2>
+<p>두 변수중 한가지 확률변수 계산<br />
+왜  maginary 인가?? table 로 표현하면 주분에 위치하므로, </p>
+<h2>Conditional PMF (조건부 확률)</h2>
+<p>$$P_{Y|X} (y|x) =   $$
+$${P_{XY}(x,y)} \over {P_X(x)} $$</p>
+<p>random variable X의 값이 x라고 알려져 있을 때, Y가 y일 확률</p>
+<h3>Product rule</h3>
+<p>conditional PMF 의 정의로 구함<br />
+$$P_{Y|X} (y|x) = P(y|x)P(x) = P(x|y)P(y)$$  </p>
+<h2>대표적 연속 확률 분포</h2>
+<h3>정규분포</h3>
+<ul>
+<li>가우스 분포 </li>
+<li>$ X \thicksim N(\mu, \sigma^2) $</li>
+<li>
+<p>PDF<br />
+$$ f_X(x) = \frac {1}{\sqrt{2\pi\sigma^2}}exp[-\frac{(x-\mu)^2}{2\sigma^2}]  $$  </p>
+</li>
+<li>
+<p>$E[x] = \mu$</p>
+</li>
+<li>$var[x] = \sigma^2$</li>
+</ul>
+<h2>대표적 이산 확률 분포</h2>
+<h3>베르누이 분포</h3>
+<ul>
+<li>
+<p>PMF<br />
+$$ P_X(x) = 
+\left{ \begin{array}{rcl}
+         p &amp; \mbox{if}
+         &amp; x = 1 \ 1-p &amp; \mbox{if} &amp; x = 0
+                \end{array}\right.
+$$  </p>
+</li>
+<li>
+<p>$E[X] = P $</p>
+</li>
+<li>$Var[X] = P(1-P) $ </li>
+</ul>
+<h3>이항분포</h3>
+<ul>
+<li>Binomial Distribution </li>
+<li>$ X \thicksim Binom(n,p) $</li>
+<li>
+<p>PMF<br />
+$$ P_X(X) = 
+\left( \begin{array}{c} n \ x \end{array} \right) p^x(1-p)^{n-x}
+$$  </p>
+</li>
+<li>
+<p>$E[x] = \Sigma E[x_i] = np$</p>
+</li>
+<li>$Var[x] = \Sigma Var[X_i] = np(1-p)$</li>
+</ul>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="https://freeeebie.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

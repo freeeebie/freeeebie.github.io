@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
         <meta charset="utf-8" />
-        <title>Log</title>
+        <title>"Linear Regression"</title>
         <link rel="stylesheet" href="https://freeeebie.github.io/theme/css/main.css" />
         <link href="https://freeeebie.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Log Atom Feed" />
 
@@ -15,31 +15,49 @@
         <header id="banner" class="body">
                 <h1><a href="https://freeeebie.github.io/">Log </a></h1>
                 <nav><ul>
-                    <li><a href="https://freeeebie.github.io/category/misc.html">misc</a></li>
+                    <li class="active"><a href="https://freeeebie.github.io/category/misc.html">misc</a></li>
                     <li><a href="https://freeeebie.github.io/category/test.html">Test</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
 <section id="content" class="body">
-<h1>Archives for Log</h1>
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="https://freeeebie.github.io/linear-regression.html" rel="bookmark"
+           title="Permalink to "Linear Regression"">"Linear Regression"</a></h1>
+    </header>
 
-<dl>
-    <dt>일 02 10월 2016</dt>
-    <dd><a href="https://freeeebie.github.io/bst-node-count.html">"BST node count"</a></dd>
-    <dt>일 02 10월 2016</dt>
-    <dd><a href="https://freeeebie.github.io/keyboard-shortcuts-for-bash.html">"Keyboard Shortcuts for Bash"</a></dd>
-    <dt>토 01 10월 2016</dt>
-    <dd><a href="https://freeeebie.github.io/linear-regression.html">"Linear Regression"</a></dd>
-    <dt>일 18 9월 2016</dt>
-    <dd><a href="https://freeeebie.github.io/mle.html">"MLE"</a></dd>
-    <dt>토 17 9월 2016</dt>
-    <dd><a href="https://freeeebie.github.io/hwagryul.html">"확률"</a></dd>
-    <dt>일 11 9월 2016</dt>
-    <dd><a href="https://freeeebie.github.io/mfccwa-gmm-sayonghayeo-eumweon-bunryu.html">"MFCC와 GMM 사용하여 음원 분류"</a></dd>
-    <dt>일 11 9월 2016</dt>
-    <dd><a href="https://freeeebie.github.io/mfcc.html">"MFCC"</a></dd>
-    <dt>토 13 12월 2014</dt>
-    <dd><a href="https://freeeebie.github.io/first_post.html">first_post</a></dd>
-</dl>
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2016-10-01T22:18:30+09:00">
+                Published: 토 01 10월 2016
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://freeeebie.github.io/author/freeeebie.html">freeeebie</a>
+        </address>
+<p>In <a href="https://freeeebie.github.io/category/misc.html">misc</a>.</p>
+<p>tags: <a href="https://freeeebie.github.io/tag/machinenbsp.html">&#39;Machine&amp;nbsp</a> <a href="https://freeeebie.github.io/tag/learning.html">Learning&#39;</a> </p>
+</footer><!-- /.post-info -->      <h1>다항식 회귀</h1>
+<p>$$ g(x_i | w_k, \cdots, w_1, w_0) = w_k(x_i)^k + \cdots + w_2(x_i)^2 + w_1(x_i) + w_0$$<br />
+$ \overrightarrow{z_i}= [x_i \:\:(x_i)^2 \:\cdots\: (x_i)^k] $ 를 갖는 다변의 선형 회귀라고 여기고 푼다.  </p>
+<h1>Model Selection</h1>
+<p>정확도를 어떻게 측정. 최대로 잘 맞는지  </p>
+<h1>overfitting</h1>
+<p>모델에 비해 data 가 너무 적어 noise 까지 fitting 해버리는 현상  </p>
+<h1>알고리즘 정확도 측정</h1>
+<p>학습에 동원되지 않은 데이터로 에러 측정<br />
+K-folder Cross Validation (CV)  </p>
+<h2>항상 지켜야 될 원칙</h2>
+<p>훈련에 쓰지 않는 데이터로 에러 측정 </p>
+<h2>Dimension의 저주</h2>
+<p>각 데이터가 10개의 속성이 있을 때 $10^{10} \:?? $</p>
+<h1>Feature mapping</h1>
+<p>$$ \overrightarrow{z} = \phi(\overrightarrow{x}) $$<br />
+$$ \frac{1}{wt} = \phi(wt) \Rightarrow mpg = w_0 + w_1 \frac{1}{wt}$$  </p>
+    </div><!-- /.entry-content -->
+
+  </article>
 </section>
         <section id="extras" class="body">
                 <div class="blogroll">
