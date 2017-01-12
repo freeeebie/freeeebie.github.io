@@ -64,7 +64,8 @@ Alt + F Move cursor forward one word on the current line&lt;br /&gt;
 Alt + B Move cursor backward one word on the current line&lt;br /&gt;
 Tab Auto-complete files and folder names  &lt;/p&gt;
 &lt;hr /&gt;</summary><category term="info"></category></entry><entry><title>"Linear Regression"</title><link href="https://freeeebie.github.io/linear-regression.html" rel="alternate"></link><published>2016-10-01T22:18:30+09:00</published><updated>2016-10-01T22:18:30+09:00</updated><author><name>freeeebie</name></author><id>tag:freeeebie.github.io,2016-10-01:linear-regression.html</id><summary type="html">&lt;h1&gt;다항식 회귀&lt;/h1&gt;
-&lt;p&gt;$$ g(x_i | w_k, \cdots, w_1, w_0) = w_k(x_i)^k + \cdots + w_2(x_i)^2 + w_1(x_i) + w_0$$&lt;br /&gt;
+&lt;div class="math"&gt;$$ g(x_i | w_k, \cdots, w_1, w_0) = w_k(x_i)^k + \cdots + w_2(x_i)^2 + w_1(x_i) + w_0$$&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;
 $ \overrightarrow{z_i}= [x_i \:\:(x_i)^2 \:\cdots\: (x_i)^k] $ 를 갖는 다변의 선형 회귀라고 여기고 푼다.  &lt;/p&gt;
 &lt;h1&gt;Model Selection&lt;/h1&gt;
 &lt;p&gt;정확도를 어떻게 측정. 최대로 잘 맞는지  &lt;/p&gt;
@@ -78,24 +79,145 @@ K-folder Cross Validation (CV)  &lt;/p&gt;
 &lt;h2&gt;Dimension의 저주&lt;/h2&gt;
 &lt;p&gt;각 데이터가 10개의 속성이 있을 때 $10^{10} \:?? $&lt;/p&gt;
 &lt;h1&gt;Feature mapping&lt;/h1&gt;
-&lt;p&gt;$$ \overrightarrow{z} = \phi(\overrightarrow{x}) $$&lt;br /&gt;
-$$ \frac{1}{wt} = \phi(wt) \Rightarrow mpg = w_0 + w_1 \frac{1}{wt}$$  &lt;/p&gt;</summary><category term="'Machine&amp;nbsp"></category><category term="Learning'"></category></entry><entry><title>"MLE"</title><link href="https://freeeebie.github.io/mle.html" rel="alternate"></link><published>2016-09-18T15:51:26+09:00</published><updated>2016-09-18T15:51:26+09:00</updated><author><name>freeeebie</name></author><id>tag:freeeebie.github.io,2016-09-18:mle.html</id><summary type="html">&lt;h1&gt;최우도 추정&lt;/h1&gt;
+&lt;div class="math"&gt;$$ \overrightarrow{z} = \phi(\overrightarrow{x}) $$&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;
+&lt;/p&gt;
+&lt;div class="math"&gt;$$ \frac{1}{wt} = \phi(wt) \Rightarrow mpg = w_0 + w_1 \frac{1}{wt}$$&lt;/div&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' &amp;&amp; location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</summary><category term="'Machine&amp;nbsp"></category><category term="Learning'"></category></entry><entry><title>"MLE"</title><link href="https://freeeebie.github.io/mle.html" rel="alternate"></link><published>2016-09-18T15:51:26+09:00</published><updated>2016-09-18T15:51:26+09:00</updated><author><name>freeeebie</name></author><id>tag:freeeebie.github.io,2016-09-18:mle.html</id><summary type="html">&lt;h1&gt;최우도 추정&lt;/h1&gt;
 &lt;p&gt;Maximum likelihood estimation&lt;br /&gt;
 데이터들이 어떤 확률 분포에 가까운지 추정하는 방법 중 하나.  &lt;/p&gt;
-&lt;p&gt;$$D = {x_1, x_2,\cdots,x_N}$$
+&lt;div class="math"&gt;$$D = {x_1, x_2,\cdots,x_N}$$&lt;/div&gt;
+&lt;p&gt;
 일 때, 
-데이터 집합의 정규분포의 위치와 모양을 결정 짓는 매개 변수 $\mu$ 와 $\sigma^2$ 를 구한다면,&lt;br /&gt;
-우도  $L(D, \mu, \sigma)$&lt;br /&gt;
-여기에 로그를 취하면, $\mathcal{L}(D, \mu, \sigma)$  &lt;/p&gt;
+데이터 집합의 정규분포의 위치와 모양을 결정 짓는 매개 변수 &lt;span class="math"&gt;\(\mu\)&lt;/span&gt; 와 &lt;span class="math"&gt;\(\sigma^2\)&lt;/span&gt; 를 구한다면,&lt;br /&gt;
+우도  &lt;span class="math"&gt;\(L(D, \mu, \sigma)\)&lt;/span&gt;&lt;br /&gt;
+여기에 로그를 취하면, &lt;span class="math"&gt;\(\mathcal{L}(D, \mu, \sigma)\)&lt;/span&gt;  &lt;/p&gt;
 &lt;p&gt;최우도 추정은 우도를 편미분하여 최대값을 구한다.&lt;br /&gt;
-$$ \hat\mu = \Sigma_i x^i/N \Leftrightarrow \partial L(D, \mu, \sigma)$$&lt;br /&gt;
-$$ \hat\sigma^2 = \Sigma_i (x_i - \hat\mu)^2 / N \Leftrightarrow \partial \mathcal{L}(D, \mu, \sigma) $$  &lt;/p&gt;</summary><category term="math"></category></entry><entry><title>"확률"</title><link href="https://freeeebie.github.io/hwagryul.html" rel="alternate"></link><published>2016-09-17T00:27:19+09:00</published><updated>2016-09-17T00:27:19+09:00</updated><author><name>freeeebie</name></author><id>tag:freeeebie.github.io,2016-09-17:hwagryul.html</id><summary type="html">&lt;h1&gt;확률분포&lt;/h1&gt;
+&lt;/p&gt;
+&lt;div class="math"&gt;$$ \hat\mu = \Sigma_i x^i/N \Leftrightarrow \partial L(D, \mu, \sigma)$$&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;
+&lt;/p&gt;
+&lt;div class="math"&gt;$$ \hat\sigma^2 = \Sigma_i (x_i - \hat\mu)^2 / N \Leftrightarrow \partial \mathcal{L}(D, \mu, \sigma) $$&lt;/div&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' &amp;&amp; location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</summary><category term="math"></category></entry><entry><title>"확률"</title><link href="https://freeeebie.github.io/hwagryul.html" rel="alternate"></link><published>2016-09-17T00:27:19+09:00</published><updated>2016-09-17T00:27:19+09:00</updated><author><name>freeeebie</name></author><id>tag:freeeebie.github.io,2016-09-17:hwagryul.html</id><summary type="html">&lt;h1&gt;확률분포&lt;/h1&gt;
 &lt;h2&gt;Random Variable(확률변수)&lt;/h2&gt;
 &lt;p&gt;정의  &lt;/p&gt;
-&lt;p&gt;$$ X:\Omega\Rightarrow R $$&lt;br /&gt;
+&lt;div class="math"&gt;$$ X:\Omega\Rightarrow R $$&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;
 X: 함수&lt;/p&gt;
 &lt;p&gt;이산확률변수&lt;br /&gt;
-$P(X=k)= P({w:X(w)=k})$&lt;/p&gt;
+&lt;span class="math"&gt;\(P(X=k)= P(\{w:X(w)=k\})\)&lt;/span&gt;&lt;/p&gt;
 &lt;h2&gt;Joint probability(결합확률)&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;확률질량함수&lt;br /&gt;
@@ -109,12 +231,13 @@ $P(X=k)= P({w:X(w)=k})$&lt;/p&gt;
 &lt;p&gt;두 변수중 한가지 확률변수 계산&lt;br /&gt;
 왜  maginary 인가?? table 로 표현하면 주분에 위치하므로, &lt;/p&gt;
 &lt;h2&gt;Conditional PMF (조건부 확률)&lt;/h2&gt;
-&lt;p&gt;$$P_{Y|X} (y|x) =   $$
-$${P_{XY}(x,y)} \over {P_X(x)} $$&lt;/p&gt;
+&lt;div class="math"&gt;$$P_{Y|X} (y|x) =   $$&lt;/div&gt;
+&lt;div class="math"&gt;$${P_{XY}(x,y)} \over {P_X(x)} $$&lt;/div&gt;
 &lt;p&gt;random variable X의 값이 x라고 알려져 있을 때, Y가 y일 확률&lt;/p&gt;
 &lt;h3&gt;Product rule&lt;/h3&gt;
 &lt;p&gt;conditional PMF 의 정의로 구함&lt;br /&gt;
-$$P_{Y|X} (y|x) = P(y|x)P(x) = P(x|y)P(y)$$  &lt;/p&gt;
+&lt;/p&gt;
+&lt;div class="math"&gt;$$P_{Y|X} (y|x) = P(y|x)P(x) = P(x|y)P(y)$$&lt;/div&gt;
 &lt;h2&gt;대표적 연속 확률 분포&lt;/h2&gt;
 &lt;h3&gt;정규분포&lt;/h3&gt;
 &lt;ul&gt;
@@ -122,24 +245,26 @@ $$P_{Y|X} (y|x) = P(y|x)P(x) = P(x|y)P(y)$$  &lt;/p&gt;
 &lt;li&gt;$ X \thicksim N(\mu, \sigma^2) $&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;PDF&lt;br /&gt;
-$$ f_X(x) = \frac {1}{\sqrt{2\pi\sigma^2}}exp[-\frac{(x-\mu)^2}{2\sigma^2}]  $$  &lt;/p&gt;
+&lt;div class="math"&gt;$$ f_X(x) = \frac {1}{\sqrt{2\pi\sigma^2}}exp[-\frac{(x-\mu)^2}{2\sigma^2}]  $$&lt;/div&gt;
+&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;$E[x] = \mu$&lt;/p&gt;
+&lt;p&gt;&lt;span class="math"&gt;\(E[x] = \mu\)&lt;/span&gt;&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;$var[x] = \sigma^2$&lt;/li&gt;
+&lt;li&gt;&lt;span class="math"&gt;\(var[x] = \sigma^2\)&lt;/span&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;대표적 이산 확률 분포&lt;/h2&gt;
 &lt;h3&gt;베르누이 분포&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;PMF&lt;br /&gt;
-$$ P_X(x) = 
-\left{ \begin{array}{rcl}
+&lt;div class="math"&gt;$$ P_X(x) = 
+\left\{ \begin{array}{rcl}
          p &amp;amp; \mbox{if}
-         &amp;amp; x = 1 \ 1-p &amp;amp; \mbox{if} &amp;amp; x = 0
+         &amp;amp; x = 1 \\ 1-p &amp;amp; \mbox{if} &amp;amp; x = 0
                 \end{array}\right.
-$$  &lt;/p&gt;
+$$&lt;/div&gt;
+&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;$E[X] = P $&lt;/p&gt;
@@ -152,15 +277,73 @@ $$  &lt;/p&gt;
 &lt;li&gt;$ X \thicksim Binom(n,p) $&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;PMF&lt;br /&gt;
-$$ P_X(X) = 
-\left( \begin{array}{c} n \ x \end{array} \right) p^x(1-p)^{n-x}
-$$  &lt;/p&gt;
+&lt;div class="math"&gt;$$ P_X(X) = 
+\left( \begin{array}{c} n \\ x \end{array} \right) p^x(1-p)^{n-x}
+$$&lt;/div&gt;
+&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;$E[x] = \Sigma E[x_i] = np$&lt;/p&gt;
+&lt;p&gt;&lt;span class="math"&gt;\(E[x] = \Sigma E[x_i] = np\)&lt;/span&gt;&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;$Var[x] = \Sigma Var[X_i] = np(1-p)$&lt;/li&gt;
-&lt;/ul&gt;</summary><category term='"Math"'></category></entry><entry><title>"MFCC와 GMM 사용하여 음원 분류"</title><link href="https://freeeebie.github.io/mfccwa-gmm-sayonghayeo-eumweon-bunryu.html" rel="alternate"></link><published>2016-09-11T21:49:31+09:00</published><updated>2016-09-11T21:49:31+09:00</updated><author><name>freeeebie</name></author><id>tag:freeeebie.github.io,2016-09-11:mfccwa-gmm-sayonghayeo-eumweon-bunryu.html</id><summary type="html">&lt;h1&gt;Sound 분류&lt;/h1&gt;
+&lt;li&gt;&lt;span class="math"&gt;\(Var[x] = \Sigma Var[X_i] = np(1-p)\)&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' &amp;&amp; location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</summary><category term='"Math"'></category></entry><entry><title>"MFCC와 GMM 사용하여 음원 분류"</title><link href="https://freeeebie.github.io/mfccwa-gmm-sayonghayeo-eumweon-bunryu.html" rel="alternate"></link><published>2016-09-11T21:49:31+09:00</published><updated>2016-09-11T21:49:31+09:00</updated><author><name>freeeebie</name></author><id>tag:freeeebie.github.io,2016-09-11:mfccwa-gmm-sayonghayeo-eumweon-bunryu.html</id><summary type="html">&lt;h1&gt;Sound 분류&lt;/h1&gt;
 &lt;p&gt;MFCC 와 GMM 을 사용하여 음원 파일을 인식하여 분류함  &lt;/p&gt;
 &lt;h2&gt;precedure&lt;/h2&gt;
 &lt;ol&gt;

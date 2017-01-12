@@ -13,13 +13,13 @@
 
         <meta name="author" content="freeeebie" />
         <meta name="keywords" content=""Math"" />
-        <meta name="description" content="확률분포 Random Variable(확률변수) 정의 $$ X:\Omega\Rightarrow R $$ X: 함수 이산확률변수 $P(X=k)= P({w:X(w)=k})$ Joint probability(결합확률) 확률질량함수 이산데이터에 대하여 누적 확률 누적분포함수 (CDF) 확률값을 적분한 것. 1에 수렴 확률밀도함수 누적분포를 미분한 것 Maginary probability(주변확률) 두 변수중 한가지 확률변수 계산 왜 maginary 인가 ..." />
+        <meta name="description" content="확률분포 Random Variable(확률변수) 정의 $$ X:\Omega\Rightarrow R $$ X: 함수 이산확률변수 \(P(X=k)= P(\{w:X(w)=k\})\) Joint probability(결합확률) 확률질량함수 이산데이터에 대하여 누적 확률 누적분포함수 (CDF) 확률값을 적분한 것. 1에 수렴 확률밀도함수 누적분포를 미분한 것 Maginary probability(주변확률) 두 변수중 한가지 확률변수 계산 왜 maginary 인가 ..." />
 
         <meta property="og:site_name" content="Log" />
         <meta property="og:type" content="article"/>
         <meta property="og:title" content="&#34;확률&#34;"/>
         <meta property="og:url" content="https://freeeebie.github.io/hwagryul.html"/>
-        <meta property="og:description" content="확률분포 Random Variable(확률변수) 정의 $$ X:\Omega\Rightarrow R $$ X: 함수 이산확률변수 $P(X=k)= P({w:X(w)=k})$ Joint probability(결합확률) 확률질량함수 이산데이터에 대하여 누적 확률 누적분포함수 (CDF) 확률값을 적분한 것. 1에 수렴 확률밀도함수 누적분포를 미분한 것 Maginary probability(주변확률) 두 변수중 한가지 확률변수 계산 왜 maginary 인가 ..."/>
+        <meta property="og:description" content="확률분포 Random Variable(확률변수) 정의 $$ X:\Omega\Rightarrow R $$ X: 함수 이산확률변수 \(P(X=k)= P(\{w:X(w)=k\})\) Joint probability(결합확률) 확률질량함수 이산데이터에 대하여 누적 확률 누적분포함수 (CDF) 확률값을 적분한 것. 1에 수렴 확률밀도함수 누적분포를 미분한 것 Maginary probability(주변확률) 두 변수중 한가지 확률변수 계산 왜 maginary 인가 ..."/>
         <meta property="article:published_time" content="2016-09-17" />
             <meta property="article:section" content="misc" />
             <meta property="article:tag" content=""Math"" />
@@ -108,10 +108,11 @@ Log            </a>
                 <h1>확률분포</h1>
 <h2>Random Variable(확률변수)</h2>
 <p>정의  </p>
-<p>$$ X:\Omega\Rightarrow R $$<br />
+<div class="math">$$ X:\Omega\Rightarrow R $$</div>
+<p><br />
 X: 함수</p>
 <p>이산확률변수<br />
-$P(X=k)= P({w:X(w)=k})$</p>
+<span class="math">\(P(X=k)= P(\{w:X(w)=k\})\)</span></p>
 <h2>Joint probability(결합확률)</h2>
 <ul>
 <li>확률질량함수<br />
@@ -125,12 +126,13 @@ $P(X=k)= P({w:X(w)=k})$</p>
 <p>두 변수중 한가지 확률변수 계산<br />
 왜  maginary 인가?? table 로 표현하면 주분에 위치하므로, </p>
 <h2>Conditional PMF (조건부 확률)</h2>
-<p>$$P_{Y|X} (y|x) =   $$
-$${P_{XY}(x,y)} \over {P_X(x)} $$</p>
+<div class="math">$$P_{Y|X} (y|x) =   $$</div>
+<div class="math">$${P_{XY}(x,y)} \over {P_X(x)} $$</div>
 <p>random variable X의 값이 x라고 알려져 있을 때, Y가 y일 확률</p>
 <h3>Product rule</h3>
 <p>conditional PMF 의 정의로 구함<br />
-$$P_{Y|X} (y|x) = P(y|x)P(x) = P(x|y)P(y)$$  </p>
+</p>
+<div class="math">$$P_{Y|X} (y|x) = P(y|x)P(x) = P(x|y)P(y)$$</div>
 <h2>대표적 연속 확률 분포</h2>
 <h3>정규분포</h3>
 <ul>
@@ -138,24 +140,26 @@ $$P_{Y|X} (y|x) = P(y|x)P(x) = P(x|y)P(y)$$  </p>
 <li>$ X \thicksim N(\mu, \sigma^2) $</li>
 <li>
 <p>PDF<br />
-$$ f_X(x) = \frac {1}{\sqrt{2\pi\sigma^2}}exp[-\frac{(x-\mu)^2}{2\sigma^2}]  $$  </p>
+<div class="math">$$ f_X(x) = \frac {1}{\sqrt{2\pi\sigma^2}}exp[-\frac{(x-\mu)^2}{2\sigma^2}]  $$</div>
+</p>
 </li>
 <li>
-<p>$E[x] = \mu$</p>
+<p><span class="math">\(E[x] = \mu\)</span></p>
 </li>
-<li>$var[x] = \sigma^2$</li>
+<li><span class="math">\(var[x] = \sigma^2\)</span></li>
 </ul>
 <h2>대표적 이산 확률 분포</h2>
 <h3>베르누이 분포</h3>
 <ul>
 <li>
 <p>PMF<br />
-$$ P_X(x) = 
-\left{ \begin{array}{rcl}
+<div class="math">$$ P_X(x) = 
+\left\{ \begin{array}{rcl}
          p &amp; \mbox{if}
-         &amp; x = 1 \ 1-p &amp; \mbox{if} &amp; x = 0
+         &amp; x = 1 \\ 1-p &amp; \mbox{if} &amp; x = 0
                 \end{array}\right.
-$$  </p>
+$$</div>
+</p>
 </li>
 <li>
 <p>$E[X] = P $</p>
@@ -168,15 +172,73 @@ $$  </p>
 <li>$ X \thicksim Binom(n,p) $</li>
 <li>
 <p>PMF<br />
-$$ P_X(X) = 
-\left( \begin{array}{c} n \ x \end{array} \right) p^x(1-p)^{n-x}
-$$  </p>
+<div class="math">$$ P_X(X) = 
+\left( \begin{array}{c} n \\ x \end{array} \right) p^x(1-p)^{n-x}
+$$</div>
+</p>
 </li>
 <li>
-<p>$E[x] = \Sigma E[x_i] = np$</p>
+<p><span class="math">\(E[x] = \Sigma E[x_i] = np\)</span></p>
 </li>
-<li>$Var[x] = \Sigma Var[X_i] = np(1-p)$</li>
+<li><span class="math">\(Var[x] = \Sigma Var[X_i] = np(1-p)\)</span></li>
 </ul>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' && location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
             </div>
             <!-- /.entry-content -->
         </article>

@@ -95,7 +95,8 @@ Ctrl + L                Clears the Screen, similar to the clear command ...</p>
             <article>
                 <h2><a href="https://freeeebie.github.io/linear-regression.html">"Linear Regression"</a></h2>
                 <div class="summary"><h1>다항식 회귀</h1>
-<p>$$ g(x_i | w_k, \cdots, w_1, w_0) = w_k(x_i)^k + \cdots + w_2(x_i)^2 + w_1(x_i) + w_0$$<br />
+<div class="math">$$ g(x_i | w_k, \cdots, w_1, w_0) = w_k(x_i)^k + \cdots + w_2(x_i)^2 + w_1(x_i) + w_0$$</div>
+<p><br />
 $ \overrightarrow{z_i}= [x_i \:\:(x_i)^2 \:\cdots\: (x_i)^k] $ 를 갖는 다변의 선형 회귀라고 여기고 푼다.  </p>
 <h1>Model Selection</h1>
 <p>정확도를 어떻게 측정. 최대로 잘 맞는지  </p>
@@ -110,11 +111,12 @@ $ \overrightarrow{z_i}= [x_i \:\:(x_i)^2 \:\cdots\: (x_i)^k] $ 를 갖는 다변
                 <div class="summary"><h1>최우도 추정</h1>
 <p>Maximum likelihood estimation<br />
 데이터들이 어떤 확률 분포에 가까운지 추정하는 방법 중 하나.  </p>
-<p>$$D = {x_1, x_2,\cdots,x_N}$$
+<div class="math">$$D = {x_1, x_2,\cdots,x_N}$$</div>
+<p>
 일 때, 
-데이터 집합의 정규분포의 위치와 모양을 결정 짓는 매개 변수 $\mu$ 와 $\sigma^2$ 를 구한다면,<br />
-우도  $L(D, \mu, \sigma)$<br />
-여기에 로그를 취하면, $\mathcal{L}(D, \mu, \sigma)$  </p>
+데이터 집합의 정규분포의 위치와 모양을 결정 짓는 매개 변수 <span class="math">\(\mu\)</span> 와 <span class="math">\(\sigma^2\)</span> 를 구한다면,<br />
+우도  <span class="math">\(L(D, \mu, \sigma)\)</span><br />
+여기에 로그를 취하면, <span class="math">\(\mathcal{L}(D, \mu, \sigma)\)</span>  </p>
 <p>최우도 ...</p>
                     <a class="btn btn-default btn-xs" href="https://freeeebie.github.io/mle.html">more ...</a>
                 </div>
@@ -125,10 +127,11 @@ $ \overrightarrow{z_i}= [x_i \:\:(x_i)^2 \:\cdots\: (x_i)^k] $ 를 갖는 다변
                 <div class="summary"><h1>확률분포</h1>
 <h2>Random Variable(확률변수)</h2>
 <p>정의  </p>
-<p>$$ X:\Omega\Rightarrow R $$<br />
+<div class="math">$$ X:\Omega\Rightarrow R $$</div>
+<p><br />
 X: 함수</p>
 <p>이산확률변수<br />
-$P(X=k)= P({w:X(w)=k})$</p>
+<span class="math">\(P(X=k)= P(\{w:X(w)=k\})\)</span></p>
 <h2>Joint probability(결합확률)</h2>
 <ul>
 <li>확률질량함수<br />
