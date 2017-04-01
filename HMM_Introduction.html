@@ -1116,7 +1116,7 @@ h6:hover .anchor-link {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -1144,18 +1144,12 @@ h6:hover .anchor-link {
 
 
 <div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">ImportError</span>                               Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-3-5ae025f37470&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-intense-fg ansi-bold">      1</span> <span class="ansi-green-fg">import</span> numpy <span class="ansi-green-fg">as</span> np
-<span class="ansi-green-fg">----&gt; 2</span><span class="ansi-red-fg"> </span><span class="ansi-green-fg">import</span> pandas <span class="ansi-green-fg">as</span> pd
-<span class="ansi-green-intense-fg ansi-bold">      3</span> 
-<span class="ansi-green-intense-fg ansi-bold">      4</span> get_ipython<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">.</span>magic<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#39;matplotlib inline&#39;</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">      5</span> 
-
-<span class="ansi-red-fg">ImportError</span>: No module named &#39;pandas&#39;</pre>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Healthy    0.6
+Fever      0.4
+Name: states, dtype: float64
+{&#39;Healthy&#39;: 0.6, &#39;Fever&#39;: 0.4}
+</pre>
 </div>
 </div>
 
@@ -1179,7 +1173,7 @@ F -&gt; F = 0.6</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># transition probability matrix </span>
@@ -1209,18 +1203,12 @@ F -&gt; F = 0.6</p>
 
 
 <div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-4-fd686ad13c94&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-intense-fg ansi-bold">      1</span> <span class="ansi-red-fg"># transition probability matrix</span>
-<span class="ansi-green-intense-fg ansi-bold">      2</span> 
-<span class="ansi-green-fg">----&gt; 3</span><span class="ansi-red-fg"> </span>trans_df <span class="ansi-blue-fg">=</span> pd<span class="ansi-blue-fg">.</span>DataFrame<span class="ansi-blue-fg">(</span>columns<span class="ansi-blue-fg">=</span>states<span class="ansi-blue-fg">,</span> index<span class="ansi-blue-fg">=</span>states<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">      4</span> trans_df<span class="ansi-blue-fg">.</span>loc<span class="ansi-blue-fg">[</span>states<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">]</span> <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0.7</span><span class="ansi-blue-fg">,</span> <span class="ansi-cyan-fg">0.3</span><span class="ansi-blue-fg">]</span>
-<span class="ansi-green-intense-fg ansi-bold">      5</span> trans_df<span class="ansi-blue-fg">.</span>loc<span class="ansi-blue-fg">[</span>states<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">]</span> <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0.4</span><span class="ansi-blue-fg">,</span> <span class="ansi-cyan-fg">0.6</span><span class="ansi-blue-fg">]</span>
-
-<span class="ansi-red-fg">NameError</span>: name &#39;pd&#39; is not defined</pre>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>        Healthy Fever
+Healthy     0.7   0.3
+Fever       0.4   0.6
+{&#39;Healthy&#39;: {&#39;Healthy&#39;: 0.7, &#39;Fever&#39;: 0.3}, &#39;Fever&#39;: {&#39;Healthy&#39;: 0.4, &#39;Fever&#39;: 0.6}}
+</pre>
 </div>
 </div>
 
@@ -1243,7 +1231,7 @@ F -&gt; F = 0.6</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">observable_states</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Normal&#39;</span><span class="p">,</span> <span class="s1">&#39;Cold&#39;</span><span class="p">,</span> <span class="s1">&#39;Dizzy&#39;</span><span class="p">]</span>
@@ -1273,18 +1261,12 @@ F -&gt; F = 0.6</p>
 
 
 <div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-5-db7852e99e49&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-intense-fg ansi-bold">      1</span> observable_states <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">&#39;Normal&#39;</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">&#39;Cold&#39;</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">&#39;Dizzy&#39;</span><span class="ansi-blue-fg">]</span>
-<span class="ansi-green-fg">----&gt; 2</span><span class="ansi-red-fg"> </span>emit_df <span class="ansi-blue-fg">=</span> pd<span class="ansi-blue-fg">.</span>DataFrame<span class="ansi-blue-fg">(</span>columns<span class="ansi-blue-fg">=</span>observable_states<span class="ansi-blue-fg">,</span> index<span class="ansi-blue-fg">=</span>states<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">      3</span> emit_df<span class="ansi-blue-fg">.</span>loc<span class="ansi-blue-fg">[</span>states<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">]</span> <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0.5</span><span class="ansi-blue-fg">,</span> <span class="ansi-cyan-fg">0.4</span><span class="ansi-blue-fg">,</span> <span class="ansi-cyan-fg">0.1</span><span class="ansi-blue-fg">]</span>
-<span class="ansi-green-intense-fg ansi-bold">      4</span> emit_df<span class="ansi-blue-fg">.</span>loc<span class="ansi-blue-fg">[</span>states<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">]</span> <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0.1</span><span class="ansi-blue-fg">,</span> <span class="ansi-cyan-fg">0.3</span><span class="ansi-blue-fg">,</span> <span class="ansi-cyan-fg">0.6</span><span class="ansi-blue-fg">]</span>
-<span class="ansi-green-intense-fg ansi-bold">      5</span> 
-
-<span class="ansi-red-fg">NameError</span>: name &#39;pd&#39; is not defined</pre>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>        Normal Cold Dizzy
+Healthy    0.5  0.4   0.1
+Fever      0.1  0.3   0.6
+{&#39;Healthy&#39;: {&#39;Cold&#39;: 0.4, &#39;Dizzy&#39;: 0.1, &#39;Normal&#39;: 0.5}, &#39;Fever&#39;: {&#39;Cold&#39;: 0.3, &#39;Dizzy&#39;: 0.6, &#39;Normal&#39;: 0.1}}
+</pre>
 </div>
 </div>
 
@@ -1306,7 +1288,7 @@ F -&gt; F = 0.6</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">viterbi</span><span class="p">(</span><span class="n">obs</span><span class="p">,</span> <span class="n">states</span><span class="p">,</span> <span class="n">start_p</span><span class="p">,</span> <span class="n">trans_p</span><span class="p">,</span> <span class="n">emit_p</span><span class="p">):</span>
@@ -1349,6 +1331,36 @@ F -&gt; F = 0.6</p>
         <span class="k">yield</span> <span class="s2">&quot;</span><span class="si">%.7s</span><span class="s2">: &quot;</span> <span class="o">%</span> <span class="n">state</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%.7s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="s2">&quot;</span><span class="si">%f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">v</span><span class="p">[</span><span class="n">state</span><span class="p">][</span><span class="s2">&quot;prob&quot;</span><span class="p">])</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">V</span><span class="p">)</span>
 
 <span class="n">viterbi</span><span class="p">([</span><span class="s1">&#39;Normal&#39;</span><span class="p">,</span> <span class="s1">&#39;Cold&#39;</span><span class="p">,</span> <span class="s1">&#39;Dizzy&#39;</span><span class="p">]</span> <span class="p">,</span> <span class="n">states</span><span class="p">,</span> <span class="n">start_p</span><span class="p">,</span> <span class="n">trans_p</span><span class="p">,</span> <span class="n">emit_p</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>           0            1            2
+Healthy: 0.30000 0.08400 0.00588
+Fever: 0.04000 0.02700 0.01512
+The steps of states are Healthy Healthy Fever with highest probability of 0.01512
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
 </pre></div>
 
 </div>
