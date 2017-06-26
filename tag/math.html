@@ -55,9 +55,6 @@ Log            </a>
                         <li >
                             <a href="/category/posts.html">Posts</a>
                         </li>
-                        <li >
-                            <a href="/category/test.html">Test</a>
-                        </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
             </ul>
@@ -73,15 +70,71 @@ Log            </a>
             <article>
                 <h2><a href="/mle.html">"MLE"</a></h2>
                 <div class="summary"><h1>최우도 추정</h1>
-<p>Maximum likelihood estimation<br />
+<p>Maximum likelihood estimation<br>
 데이터들이 어떤 확률 분포에 가까운지 추정하는 방법 중 하나.  </p>
 <div class="math">$$D = {x_1, x_2,\cdots,x_N}$$</div>
 <p>
 일 때, 
-데이터 집합의 정규분포의 위치와 모양을 결정 짓는 매개 변수 <span class="math">\(\mu\)</span> 와 <span class="math">\(\sigma^2\)</span> 를 구한다면,<br />
-우도  <span class="math">\(L(D, \mu, \sigma)\)</span><br />
+데이터 집합의 정규분포의 위치와 모양을 결정 짓는 매개 변수 <span class="math">\(\mu\)</span> 와 <span class="math">\(\sigma^2\)</span> 를 구한다면,<br>
+우도  <span class="math">\(L(D, \mu, \sigma)\)</span><br>
 여기에 로그를 취하면, <span class="math">\(\mathcal{L}(D, \mu, \sigma)\)</span>  </p>
-<p>최우도 ...</p>
+<p>최우도 …</p><script type='text/javascript'>if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "left",
+        indent = "2em",
+        linebreak = "false";
+
+    if (true) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' && location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {} }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
                     <a class="btn btn-default btn-xs" href="/mle.html">more ...</a>
                 </div>
             </article>
@@ -92,22 +145,78 @@ Log            </a>
 <h2>Random Variable(확률변수)</h2>
 <p>정의  </p>
 <div class="math">$$ X:\Omega\Rightarrow R $$</div>
-<p><br />
+<p><br>
 X: 함수</p>
-<p>이산확률변수<br />
+<p>이산확률변수<br>
 <span class="math">\(P(X=k)= P(\{w:X(w)=k\})\)</span></p>
 <h2>Joint probability(결합확률)</h2>
 <ul>
-<li>확률질량함수<br />
+<li>확률질량함수<br>
 이산데이터에 대하여 누적 확률  </li>
-<li>누적분포함수 (CDF)<br />
+<li>누적분포함수 (CDF)<br>
     확률값을 적분한 것. 1에 수렴 </li>
-<li>확률밀도함수<br />
+<li>확률밀도함수<br>
 누적분포를 미분한 것 </li>
 </ul>
 <h2>Maginary probability(주변확률)</h2>
-<p>두 변수중 한가지 확률변수 계산<br />
-왜  maginary 인가 ...</p>
+<p>두 변수중 한가지 확률변수 계산<br>
+왜  maginary 인가 …</p><script type='text/javascript'>if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "left",
+        indent = "2em",
+        linebreak = "false";
+
+    if (true) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' && location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {} }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
                     <a class="btn btn-default btn-xs" href="/hwagryul.html">more ...</a>
                 </div>
             </article>
@@ -116,16 +225,12 @@ X: 함수</p>
         </div>
         <div class="col-sm-3" id="sidebar">
             <aside>
-
+<!-- Sidebar -->
 <section class="well well-sm">
-    <ul class="list-group list-group-flush">
-
-
-
-
-
-    </ul>
-</section>            </aside>
+  <ul class="list-group list-group-flush">
+  </ul>
+</section>
+<!-- End Sidebar -->            </aside>
         </div>
     </div>
 </div>
@@ -148,6 +253,7 @@ X: 함수</p>
 
 <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
 <script src="/theme/js/respond.min.js"></script>
+
 
 
 </body>

@@ -55,9 +55,6 @@ Log            </a>
                         <li >
                             <a href="/category/posts.html">Posts</a>
                         </li>
-                        <li >
-                            <a href="/category/test.html">Test</a>
-                        </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
             </ul>
@@ -74,32 +71,88 @@ Log            </a>
                 <h2><a href="/linear-regression.html">"Linear Regression"</a></h2>
                 <div class="summary"><h1>다항식 회귀</h1>
 <div class="math">$$ g(x_i | w_k, \cdots, w_1, w_0) = w_k(x_i)^k + \cdots + w_2(x_i)^2 + w_1(x_i) + w_0$$</div>
-<p><br />
+<p><br>
 $ \overrightarrow{z_i}= [x_i \:\:(x_i)^2 \:\cdots\: (x_i)^k] $ 를 갖는 다변의 선형 회귀라고 여기고 푼다.  </p>
 <h1>Model Selection</h1>
 <p>정확도를 어떻게 측정. 최대로 잘 맞는지  </p>
 <h1>overfitting</h1>
-<p>모델에 비해 data 가 너무 적어 noise 까지 ...</p>
+<p>모델에 비해 data 가 너무 적어 noise 까지 …</p><script type='text/javascript'>if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "left",
+        indent = "2em",
+        linebreak = "false";
+
+    if (true) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' && location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {} }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
                     <a class="btn btn-default btn-xs" href="/linear-regression.html">more ...</a>
                 </div>
             </article>
             <hr/>
             <article>
                 <h2><a href="/mfcc.html">"MFCC"</a></h2>
-                <div class="summary"><p>음성 데이터의 특징 추출<br />
-성대의 떨림은 고유함.성도를 system H 라고 가정하여<br />
+                <div class="summary"><p>음성 데이터의 특징 추출<br>
+성대의 떨림은 고유함.성도를 system H 라고 가정하여<br>
 이 시스템 H의 특징을 찾음.  </p>
-<p>1 step<br />
-시그널을 일정 frame 단위로 나눔.<br />
-windowing 실행<br />
-2 step<br />
-해당 frame에 Fourier Transform을 실행하여 power spectrum 을 구함.<br />
-3 step<br />
-mel filter bank 적용<br />
-4 step<br />
-log 적용<br />
-5 step<br />
-DCT ...</p>
+<p>1 step<br>
+시그널을 일정 frame 단위로 나눔.<br>
+windowing 실행<br>
+2 step<br>
+해당 frame에 Fourier Transform을 실행하여 power spectrum 을 구함.<br>
+3 step<br>
+mel filter bank 적용<br>
+4 step<br>
+log 적용<br>
+5 step<br>
+DCT …</p>
                     <a class="btn btn-default btn-xs" href="/mfcc.html">more ...</a>
                 </div>
             </article>
@@ -108,16 +161,12 @@ DCT ...</p>
         </div>
         <div class="col-sm-3" id="sidebar">
             <aside>
-
+<!-- Sidebar -->
 <section class="well well-sm">
-    <ul class="list-group list-group-flush">
-
-
-
-
-
-    </ul>
-</section>            </aside>
+  <ul class="list-group list-group-flush">
+  </ul>
+</section>
+<!-- End Sidebar -->            </aside>
         </div>
     </div>
 </div>
@@ -140,6 +189,7 @@ DCT ...</p>
 
 <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
 <script src="/theme/js/respond.min.js"></script>
+
 
 
 </body>

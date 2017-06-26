@@ -54,9 +54,6 @@ Log            </a>
                         <li >
                             <a href="/category/posts.html">Posts</a>
                         </li>
-                        <li >
-                            <a href="/category/test.html">Test</a>
-                        </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
             </ul>
@@ -70,18 +67,9 @@ Log            </a>
     <div class="row">
         <div class="col-sm-9">
             <article>
-                <h2><a href="/HMM_Introduction.html">HMM Introduction</a></h2>
-                <div class="summary">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Hidden-Markov-Model-Introduction">Hidden Markov Model Introduction<a class="anchor-link" href="#Hidden-Markov-Model-Introduction">&#182;</a></h2><p>Hidden Markov Model(HMM)이란 Markov Model 중 state 변화에 대하여 관찰자는 알지 못하고, 단지 결과만을 관측할 수 있는 Model 을 의미한다. 즉, state 변화가 hidden 되어 있다는 의미이다.<br>
-아래는 위키피디아에서 제시한 예제인데 이를 보면 HMM에 대하여 이해하기 수월하다.</p>
-<blockquote><p>관측자에게 보이지 않는 방이 있고, 그 안에 요정이 있다.방에는 항아리 $ X1,X2,X3,... $
-    가 존재한다. 각각의 항아리에는 $ y_1,y_2,y_3,...$으로 이름이 붙은 공들이 섞여서 들어가 있고, 항아리의 공들이 섞인 상태는 알려져있다. 요정은 방 안의 항아리를 하나 고르고, 항아리 안에서 무작위로 공을 하나 꺼내어 컨베이어 벨트에 올려둔다. 관측자는 컨베이어 벨트 위의 공의 순서를 관측할 수는 있지만, 해당 공들이 뽑혔던 항아리의 순서는 알 수 없다. 요정이 공을 뽑을 항아리를 고를 때는 다음과 같은 특별한 규칙을 따른다 : n번째 공을 뽑기 위한 항아리는 무작위 숫자와 (n-1)번째 공을 뽑기 위해 선택한 항아리에만 영향을 받는다. 현재 항아리로부터 하나보다 더 전에 선택된 항아리는 현재 항아리의 선택에 직접적으로 영향을 주지 않는다. (<a href="https://ko.wikipedia.org/wiki/%EC%9D%80%EB%8B%89_%EB%A7%88%EB%A5%B4%EC%BD%94%ED%94%84_%EB%AA%A8%EB%8D%B8">https://ko.wikipedia.org/wiki/%EC%9D%80%EB%8B%89_%EB%A7%88%EB%A5%B4%EC%BD%94%ED%94%84_%EB%AA%A8%EB%8D%B8</a>
-                    <a class="btn btn-default btn-xs" href="/HMM_Introduction.html">more ...</a>
+                <h2><a href="/hmm-introduction.html">HMM Introduction</a></h2>
+                <div class="summary"><p>Hidden Markov Model(HMM)이란 Markov Model 중 state 변화에 대하여 관찰자는 알지 못하고, 단지 결과만을 관측할 수 있는 Model 을 의미한다. 즉, state 변화가 hidden 되어 있다는 의미이다.</p>
+                    <a class="btn btn-default btn-xs" href="/hmm-introduction.html">more ...</a>
                 </div>
             </article>
             <hr/>
@@ -93,7 +81,7 @@ Log            </a>
 <ol>
 <li>start root  </li>
 <li>만약 입력 데이터보다 해당 노드의 숫자가 크다면(if input &lt; node.value), 왼쪽 노드로 이동  </li>
-<li>만약 입력 데이터보다 ...</li></ol>
+<li>만약 입력 데이터보다 …</li></ol>
                     <a class="btn btn-default btn-xs" href="/bst-node-count.html">more ...</a>
                 </div>
             </article>
@@ -102,9 +90,9 @@ Log            </a>
                 <h2><a href="/keyboard-shortcuts-for-bash.html">"Keyboard Shortcuts for Bash"</a></h2>
                 <div class="summary"><h1>Bash shell 단축키</h1>
 <p>http://www.howtogeek.com/howto/ubuntu/keyboard-shortcuts-for-bash-command-shell-for-ubuntu-debian-suse-redhat-linux-etc/ 에서 발췌함  </p>
-<p>Ctrl + A    Go to the beginning of the line you are currently typing on<br />
-Ctrl + E    Go to the end of the line you are currently typing on<br />
-Ctrl + L                Clears the Screen, similar to the clear command ...</p>
+<p>Ctrl + A    Go to the beginning of the line you are currently typing on<br>
+Ctrl + E    Go to the end of the line you are currently typing on<br>
+Ctrl + L                Clears the Screen, similar to the clear command …</p>
                     <a class="btn btn-default btn-xs" href="/keyboard-shortcuts-for-bash.html">more ...</a>
                 </div>
             </article>
@@ -113,12 +101,68 @@ Ctrl + L                Clears the Screen, similar to the clear command ...</p>
                 <h2><a href="/linear-regression.html">"Linear Regression"</a></h2>
                 <div class="summary"><h1>다항식 회귀</h1>
 <div class="math">$$ g(x_i | w_k, \cdots, w_1, w_0) = w_k(x_i)^k + \cdots + w_2(x_i)^2 + w_1(x_i) + w_0$$</div>
-<p><br />
+<p><br>
 $ \overrightarrow{z_i}= [x_i \:\:(x_i)^2 \:\cdots\: (x_i)^k] $ 를 갖는 다변의 선형 회귀라고 여기고 푼다.  </p>
 <h1>Model Selection</h1>
 <p>정확도를 어떻게 측정. 최대로 잘 맞는지  </p>
 <h1>overfitting</h1>
-<p>모델에 비해 data 가 너무 적어 noise 까지 ...</p>
+<p>모델에 비해 data 가 너무 적어 noise 까지 …</p><script type='text/javascript'>if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "left",
+        indent = "2em",
+        linebreak = "false";
+
+    if (true) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' && location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {} }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
                     <a class="btn btn-default btn-xs" href="/linear-regression.html">more ...</a>
                 </div>
             </article>
@@ -126,15 +170,71 @@ $ \overrightarrow{z_i}= [x_i \:\:(x_i)^2 \:\cdots\: (x_i)^k] $ 를 갖는 다변
             <article>
                 <h2><a href="/mle.html">"MLE"</a></h2>
                 <div class="summary"><h1>최우도 추정</h1>
-<p>Maximum likelihood estimation<br />
+<p>Maximum likelihood estimation<br>
 데이터들이 어떤 확률 분포에 가까운지 추정하는 방법 중 하나.  </p>
 <div class="math">$$D = {x_1, x_2,\cdots,x_N}$$</div>
 <p>
 일 때, 
-데이터 집합의 정규분포의 위치와 모양을 결정 짓는 매개 변수 <span class="math">\(\mu\)</span> 와 <span class="math">\(\sigma^2\)</span> 를 구한다면,<br />
-우도  <span class="math">\(L(D, \mu, \sigma)\)</span><br />
+데이터 집합의 정규분포의 위치와 모양을 결정 짓는 매개 변수 <span class="math">\(\mu\)</span> 와 <span class="math">\(\sigma^2\)</span> 를 구한다면,<br>
+우도  <span class="math">\(L(D, \mu, \sigma)\)</span><br>
 여기에 로그를 취하면, <span class="math">\(\mathcal{L}(D, \mu, \sigma)\)</span>  </p>
-<p>최우도 ...</p>
+<p>최우도 …</p><script type='text/javascript'>if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "left",
+        indent = "2em",
+        linebreak = "false";
+
+    if (true) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' && location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {} }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
                     <a class="btn btn-default btn-xs" href="/mle.html">more ...</a>
                 </div>
             </article>
@@ -145,88 +245,99 @@ $ \overrightarrow{z_i}= [x_i \:\:(x_i)^2 \:\cdots\: (x_i)^k] $ 를 갖는 다변
 <h2>Random Variable(확률변수)</h2>
 <p>정의  </p>
 <div class="math">$$ X:\Omega\Rightarrow R $$</div>
-<p><br />
+<p><br>
 X: 함수</p>
-<p>이산확률변수<br />
+<p>이산확률변수<br>
 <span class="math">\(P(X=k)= P(\{w:X(w)=k\})\)</span></p>
 <h2>Joint probability(결합확률)</h2>
 <ul>
-<li>확률질량함수<br />
+<li>확률질량함수<br>
 이산데이터에 대하여 누적 확률  </li>
-<li>누적분포함수 (CDF)<br />
+<li>누적분포함수 (CDF)<br>
     확률값을 적분한 것. 1에 수렴 </li>
-<li>확률밀도함수<br />
+<li>확률밀도함수<br>
 누적분포를 미분한 것 </li>
 </ul>
 <h2>Maginary probability(주변확률)</h2>
-<p>두 변수중 한가지 확률변수 계산<br />
-왜  maginary 인가 ...</p>
+<p>두 변수중 한가지 확률변수 계산<br>
+왜  maginary 인가 …</p><script type='text/javascript'>if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "left",
+        indent = "2em",
+        linebreak = "false";
+
+    if (true) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' && location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {} }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
                     <a class="btn btn-default btn-xs" href="/hwagryul.html">more ...</a>
                 </div>
             </article>
             <hr/>
             <article>
-                <h2><a href="/mfccwa-gmm-sayonghayeo-eumweon-bunryu.html">"MFCC와 GMM 사용하여 음원 분류"</a></h2>
-                <div class="summary"><h1>Sound 분류</h1>
-<p>MFCC 와 GMM 을 사용하여 음원 파일을 인식하여 분류함  </p>
-<h2>precedure</h2>
-<ol>
-<li>trainging data 의 MFCC 추출  </li>
-<li>각 training data 에 대한 GMM 생성  </li>
-<li>입력 음원에 대하여 MFCC 추출  </li>
-<li>각 GMM 에 대하여 확률을 계산하여 best 한 GMM 모델을 선택  </li>
-</ol>
-<h2>GMM</h2>
-<p>clustering 기법<br />
-EM algorithm 사용  </p>
-                    <a class="btn btn-default btn-xs" href="/mfccwa-gmm-sayonghayeo-eumweon-bunryu.html">more ...</a>
-                </div>
-            </article>
-            <hr/>
-            <article>
                 <h2><a href="/mfcc.html">"MFCC"</a></h2>
-                <div class="summary"><p>음성 데이터의 특징 추출<br />
-성대의 떨림은 고유함.성도를 system H 라고 가정하여<br />
+                <div class="summary"><p>음성 데이터의 특징 추출<br>
+성대의 떨림은 고유함.성도를 system H 라고 가정하여<br>
 이 시스템 H의 특징을 찾음.  </p>
-<p>1 step<br />
-시그널을 일정 frame 단위로 나눔.<br />
-windowing 실행<br />
-2 step<br />
-해당 frame에 Fourier Transform을 실행하여 power spectrum 을 구함.<br />
-3 step<br />
-mel filter bank 적용<br />
-4 step<br />
-log 적용<br />
-5 step<br />
-DCT ...</p>
+<p>1 step<br>
+시그널을 일정 frame 단위로 나눔.<br>
+windowing 실행<br>
+2 step<br>
+해당 frame에 Fourier Transform을 실행하여 power spectrum 을 구함.<br>
+3 step<br>
+mel filter bank 적용<br>
+4 step<br>
+log 적용<br>
+5 step<br>
+DCT …</p>
                     <a class="btn btn-default btn-xs" href="/mfcc.html">more ...</a>
-                </div>
-            </article>
-            <hr/>
-            <article>
-                <h2><a href="/first-post.html">First Post</a></h2>
-                <div class="summary">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="First-post!">First post!<a class="anchor-link" href="#First-post!">&#182;</a></h1><p>This will be the first post in our new Pelican blog! You can add any code or markdown cells to this Jupyter notebook, and they will be rendered on your blog.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-                    <a class="btn btn-default btn-xs" href="/first-post.html">more ...</a>
-                </div>
-            </article>
-            <hr/>
-            <article>
-                <h2><a href="/first_post.html">first_post</a></h2>
-                <div class="summary"><p>Hello World from Pelican!</p>
-
-                    <a class="btn btn-default btn-xs" href="/first_post.html">more ...</a>
                 </div>
             </article>
             <hr/>
@@ -234,16 +345,12 @@ DCT ...</p>
         </div>
         <div class="col-sm-3" id="sidebar">
             <aside>
-
+<!-- Sidebar -->
 <section class="well well-sm">
-    <ul class="list-group list-group-flush">
-
-
-
-
-
-    </ul>
-</section>            </aside>
+  <ul class="list-group list-group-flush">
+  </ul>
+</section>
+<!-- End Sidebar -->            </aside>
         </div>
     </div>
 </div>
@@ -266,6 +373,7 @@ DCT ...</p>
 
 <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
 <script src="/theme/js/respond.min.js"></script>
+
 
 
 </body>
