@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ko" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>End-to-End Speech Recognition - 작성중 - Log</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<link rel="canonical" href="/end-to-end-speech-recognition-jagseongjung.html">
+
+        <meta name="author" content="freeeebie" />
+        <meta name="keywords" content=""Machine&nbsp,Learning"" />
+        <meta name="description" content="해당 글은 &#34;Towards End-to-End Speech Recognition with Recurrent Neural Networks&#34; 를 기반하여 공부한 내용을 작성하였다. 기존에 Neural Network을 적용한 음성 인식 모델은 여러 단계 중 하나의 단계, 즉 classify 를 위하여 NN 을 사용하였다. 기존 모델의 동작 파이프라인을 개략적으로 나타내면 아래와 같다. Feature extraction : MFCC 와 같은 단계를 의미한다. Speaker …" />
+
+        <meta property="og:site_name" content="Log" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="End-to-End Speech Recognition - 작성중"/>
+        <meta property="og:url" content="/end-to-end-speech-recognition-jagseongjung.html"/>
+        <meta property="og:description" content="해당 글은 &#34;Towards End-to-End Speech Recognition with Recurrent Neural Networks&#34; 를 기반하여 공부한 내용을 작성하였다. 기존에 Neural Network을 적용한 음성 인식 모델은 여러 단계 중 하나의 단계, 즉 classify 를 위하여 NN 을 사용하였다. 기존 모델의 동작 파이프라인을 개략적으로 나타내면 아래와 같다. Feature extraction : MFCC 와 같은 단계를 의미한다. Speaker …"/>
+        <meta property="article:published_time" content="2017-06-24" />
+            <meta property="article:section" content="misc" />
+            <meta property="article:tag" content=""Machine&nbsp" />
+            <meta property="article:tag" content="Learning"" />
+            <meta property="article:author" content="freeeebie" />
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="/theme/css/bootstrap.min.css" type="text/css"/>
+    <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
+
+
+
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">
+Log            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                        <li class="active">
+                            <a href="/category/misc.html">Misc</a>
+                        </li>
+                        <li >
+                            <a href="/category/posts.html">Posts</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="/end-to-end-speech-recognition-jagseongjung.html"
+                       rel="bookmark"
+                       title="Permalink to End-to-End Speech Recognition - 작성중">
+                        End-to-End Speech Recognition - 작성중
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2017-06-24T20:11:07+09:00"> 토 24 6월 2017</time>
+    </span>
+
+
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tag/machinenbsp.html">"Machine&nbsp</a>
+        /
+	<a href="/tag/learning.html">Learning"</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>해당 글은 "Towards End-to-End Speech Recognition with Recurrent Neural Networks" 를 기반하여 공부한 내용을 작성하였다. </p>
+<p>기존에 Neural Network을 적용한 음성 인식 모델은 여러 단계 중 하나의 단계, 즉 classify 를 위하여 NN 을 사용하였다. </p>
+<p>기존 모델의 동작 파이프라인을 개략적으로 나타내면 아래와 같다. </p>
+<ol>
+<li>Feature extraction : MFCC 와 같은 단계를 의미한다. </li>
+<li>Speaker Normalization : Vocal tract length normalization </li>
+<li>Neural Network : Accoustic data 의 개별 프레임을 분류하기 위해 사용</li>
+<li>Output distirbution : HMM 을 위한 것</li>
+</ol>
+<p>이러한 모델의 단점은 우선  Pronouncation dictionary 가 필요하다는 것이다. Speech recognition system 을 트레인 시키기 위하여 사용되는 transcription 은 어휘인데 반해 네트워크가 제시하는 것은 음소이다. 그러므로 단어들을 음소의 모음으로 매핑 시키기 위해서 pronunciation dictionary 가 필요하다. 즉, '한강' 이라는 단어를 train 한다면 나오는 결과가 'ㅎ ㅏ ㄴ ㄱ ㅏ ㅇ' 인 음소의 나열이 나온다는 의미로 보인다. 이것을 원래 단어와 매핑 시키기 위하여 사전이 필요하다는 것이고 이것은 사람이 일일이 만들어야 하는 수고가 필요하다는 것이다.  </p>
+<p>또한 language model (https://en.wikipedia.org/wiki/Language_model)이 필요하다는 것이다. HMM 에 의해 산출된 accoustic score 는 text corpus 를 train 한 language model 과 결합된다. 이러한 약점들을 극복하기 위하여 하나의 네트워크로 음성 인식이 가능한 End-to-end Speech Recognition 이 출현하게 된 것이다. </p>
+<p>음성 인식 문서를 읽다보면 자주 나오는 용어들이 있다. 여기서 잠시 용어를 정리하면,  </p>
+<ul>
+<li>phonetic, phoneme : 음소. 더 이상 작게 나눌 수 없는 음운론상의 최소 단위라고 한다. 낱소리라고도 한다.   한국어에서는 쉽게 자음과 모음이라고 생각하면 된다. </li>
+<li>lexical, lexicon : lexical 은 어휘라는 뜻이고, lexicon은 사전이란 뜻으로 음성인식에서는 어휘 목록이라는 의미로 사용된다. </li>
+<li>text corpus</li>
+<li>transcription : 구술된 내용을 글로 옯김. </li>
+</ul>
+<p>이 논문에서는  Spectrogram 을 최소한의 preprocession scheme 으로 사용하였다. Spectrogram 은 신호를 x축은 시간, y축은 주파수로 설정하고, 진폭의 차이에 따라 농도나 색상으로 나타내는 것을 의미한다.  </p>
+<h2>Network architecture</h2>
+<p>이 논문을 이해하려고 한다면 선행적으로 RNN 과 LSTM 에 대한 이해를 해야 한다. </p>
+<p>RNN 은 아래에 잘 설명이 되어 있다. </p>
+<p>http://aikorea.org/blog/rnn-tutorial-1/</p>
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+<!-- Sidebar -->
+<section class="well well-sm">
+  <ul class="list-group list-group-flush">
+  </ul>
+</section>
+<!-- End Sidebar -->            </aside>
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2017 freeeebie
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="/theme/js/respond.min.js"></script>
+
+
+
+</body>
+</html>
