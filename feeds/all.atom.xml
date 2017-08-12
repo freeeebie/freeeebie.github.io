@@ -1,379 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Log</title><link href="https://freeeebie.github.io/" rel="alternate"></link><link href="https://freeeebie.github.io/feeds/all.atom.xml" rel="self"></link><id>https://freeeebie.github.io/</id><updated>2016-10-02T14:39:10+09:00</updated><entry><title>"BST node count"</title><link href="https://freeeebie.github.io/bst-node-count.html" rel="alternate"></link><published>2016-10-02T14:39:10+09:00</published><updated>2016-10-02T14:39:10+09:00</updated><author><name>freeeebie</name></author><id>tag:freeeebie.github.io,2016-10-02:bst-node-count.html</id><summary type="html">&lt;h1&gt;BST 에서 node 갯수 세기&lt;/h1&gt;
-&lt;p&gt;left/right sub tree 의 children 숫자가 미리 주어졌을 때, 입력된 node 보다 큰 수 or 작은 수의 갯수 구하기  &lt;/p&gt;
-&lt;h2&gt;입력 node 보다 작은 숫자 구하기&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Log</title><link href="https://freeeebie.github.io/" rel="alternate"></link><link href="https://freeeebie.github.io/feeds/all.atom.xml" rel="self"></link><id>https://freeeebie.github.io/</id><updated>2017-06-24T20:11:07+09:00</updated><entry><title>End-to-End Speech Recognition - 작성중</title><link href="https://freeeebie.github.io/end-to-end-speech-recognition-jagseongjung.html" rel="alternate"></link><published>2017-06-24T20:11:07+09:00</published><updated>2017-06-24T20:11:07+09:00</updated><author><name>freeeebie</name></author><id>tag:freeeebie.github.io,2017-06-24:/end-to-end-speech-recognition-jagseongjung.html</id><summary type="html">&lt;p&gt;해당 글은 "Towards End-to-End Speech Recognition with Recurrent Neural Networks" 를 기반하여 공부한 내용을 작성하였다. &lt;/p&gt;
+&lt;p&gt;기존에 Neural Network을 적용한 음성 인식 모델은 여러 단계 중 하나의 단계, 즉 classify 를 위하여 NN 을 사용하였다. &lt;/p&gt;
+&lt;p&gt;기존 모델의 동작 파이프라인을 개략적으로 나타내면 아래와 같다. &lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;start root  &lt;/li&gt;
-&lt;li&gt;만약 입력 데이터보다 해당 노드의 숫자가 크다면(if input &amp;lt; node.value), 왼쪽 노드로 이동  &lt;/li&gt;
-&lt;li&gt;만약 입력 데이터보다 해당 노드의 숫자가 작다면(if input &amp;gt;= node.value), count 변수에 해당 node 의 left sub tree 의 node 숫자 + 1(해당 node) 을 더하고, 오른쪽으로 이동.  &lt;/li&gt;
-&lt;li&gt;이동한 node 가 null 인 경우까지 반복  &lt;/li&gt;
-&lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;count_less&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;node&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;input&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;node&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;count&lt;/span&gt;
-    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;node&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;input&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-        &lt;span class="n"&gt;count&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;count_less&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;node&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;left&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;input&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="k"&gt;elif&lt;/span&gt; &lt;span class="n"&gt;node&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="nb"&gt;input&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-        &lt;span class="n"&gt;count&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;node&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;leftchildren&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;count_less&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;node&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;right&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;input&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="k"&gt;elif&lt;/span&gt; &lt;span class="n"&gt;node&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="nb"&gt;input&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-        &lt;span class="n"&gt;count&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;node&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;leftchildren&lt;/span&gt;
-    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;count&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h2&gt;입력 node 보다 큰 숫자 구하기&lt;/h2&gt;
+&lt;li&gt;Feature extraction : MFCC 와 같은 단계를 의미한다. &lt;/li&gt;
+&lt;li&gt;Speaker …&lt;/li&gt;&lt;/ol&gt;</summary><content type="html">&lt;p&gt;해당 글은 "Towards End-to-End Speech Recognition with Recurrent Neural Networks" 를 기반하여 공부한 내용을 작성하였다. &lt;/p&gt;
+&lt;p&gt;기존에 Neural Network을 적용한 음성 인식 모델은 여러 단계 중 하나의 단계, 즉 classify 를 위하여 NN 을 사용하였다. &lt;/p&gt;
+&lt;p&gt;기존 모델의 동작 파이프라인을 개략적으로 나타내면 아래와 같다. &lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;start root &lt;/li&gt;
-&lt;li&gt;만약 입력 데이터보다 해당 노드의 숫자가 크다면(if input &amp;lt; node.value), count 변수에 해당 node 의 right sub tree 의 node 숫자 + 1(해당 node) 을 더하고, 왼쪽 자식으로 이동. &lt;/li&gt;
-&lt;li&gt;만약 입력 데이터보다 해당 노드의 숫자가 작다면(if input &amp;gt;= node.value), 오른쪽 자식으로 이동 &lt;/li&gt;
-&lt;li&gt;이동한 node 가 null 인 경우까지 반복 &lt;/li&gt;
+&lt;li&gt;Feature extraction : MFCC 와 같은 단계를 의미한다. &lt;/li&gt;
+&lt;li&gt;Speaker Normalization : Vocal tract length normalization &lt;/li&gt;
+&lt;li&gt;Neural Network : Accoustic data 의 개별 프레임을 분류하기 위해 사용&lt;/li&gt;
+&lt;li&gt;Output distirbution : HMM 을 위한 것&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;count_more&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;node&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;input&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;node&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;count&lt;/span&gt;
-    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;node&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="nb"&gt;input&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-        &lt;span class="n"&gt;count&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;count_more&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;node&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;right&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;input&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="k"&gt;elif&lt;/span&gt; &lt;span class="n"&gt;node&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;input&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-        &lt;span class="n"&gt;count&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;node&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;rightchildren&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;count_more&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;node&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;left&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;input&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="k"&gt;elif&lt;/span&gt; &lt;span class="n"&gt;node&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="nb"&gt;input&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-        &lt;span class="n"&gt;count&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;node&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;rightchildren&lt;/span&gt;
-    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;count&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;전체 코드&lt;br /&gt;
-https://github.com/freeeebie/algorithm-study/blob/master/tree/count_less_greater_nodes.py&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;reference&lt;br /&gt;
-https://www.careercup.com/question?id=5165570324430848&lt;/p&gt;</summary><category term="algorithm"></category></entry><entry><title>"Keyboard Shortcuts for Bash"</title><link href="https://freeeebie.github.io/keyboard-shortcuts-for-bash.html" rel="alternate"></link><published>2016-10-02T14:33:33+09:00</published><updated>2016-10-02T14:33:33+09:00</updated><author><name>freeeebie</name></author><id>tag:freeeebie.github.io,2016-10-02:keyboard-shortcuts-for-bash.html</id><summary type="html">&lt;h1&gt;Bash shell 단축키&lt;/h1&gt;
-&lt;p&gt;http://www.howtogeek.com/howto/ubuntu/keyboard-shortcuts-for-bash-command-shell-for-ubuntu-debian-suse-redhat-linux-etc/ 에서 발췌함  &lt;/p&gt;
-&lt;p&gt;Ctrl + A    Go to the beginning of the line you are currently typing on&lt;br /&gt;
-Ctrl + E    Go to the end of the line you are currently typing on&lt;br /&gt;
-Ctrl + L                Clears the Screen, similar to the clear command&lt;br /&gt;
-Ctrl + U    Clears the line before the cursor position. If you are at the end of the line, clears the entire line.&lt;br /&gt;
-Ctrl + H    Same as backspace&lt;br /&gt;
-Ctrl + R    Let’s you search through previously used commands&lt;br /&gt;
-Ctrl + C    Kill whatever you are running&lt;br /&gt;
-Ctrl + D    Exit the current shell&lt;br /&gt;
-Ctrl + Z    Puts whatever you are running into a suspended   background process. fg restores it.&lt;br /&gt;
-Ctrl + W    Delete the word before the cursor&lt;br /&gt;
-Ctrl + K    Clear the line after the cursor&lt;br /&gt;
-Ctrl + T    Swap the last two characters before the cursor&lt;br /&gt;
-Esc + T Swap the last two words before the cursor&lt;br /&gt;
-Alt + F Move cursor forward one word on the current line&lt;br /&gt;
-Alt + B Move cursor backward one word on the current line&lt;br /&gt;
-Tab Auto-complete files and folder names  &lt;/p&gt;
-&lt;hr /&gt;</summary><category term="info"></category></entry><entry><title>"Linear Regression"</title><link href="https://freeeebie.github.io/linear-regression.html" rel="alternate"></link><published>2016-10-01T22:18:30+09:00</published><updated>2016-10-01T22:18:30+09:00</updated><author><name>freeeebie</name></author><id>tag:freeeebie.github.io,2016-10-01:linear-regression.html</id><summary type="html">&lt;h1&gt;다항식 회귀&lt;/h1&gt;
-&lt;div class="math"&gt;$$ g(x_i | w_k, \cdots, w_1, w_0) = w_k(x_i)^k + \cdots + w_2(x_i)^2 + w_1(x_i) + w_0$$&lt;/div&gt;
-&lt;p&gt;&lt;br /&gt;
-$ \overrightarrow{z_i}= [x_i \:\:(x_i)^2 \:\cdots\: (x_i)^k] $ 를 갖는 다변의 선형 회귀라고 여기고 푼다.  &lt;/p&gt;
-&lt;h1&gt;Model Selection&lt;/h1&gt;
-&lt;p&gt;정확도를 어떻게 측정. 최대로 잘 맞는지  &lt;/p&gt;
-&lt;h1&gt;overfitting&lt;/h1&gt;
-&lt;p&gt;모델에 비해 data 가 너무 적어 noise 까지 fitting 해버리는 현상  &lt;/p&gt;
-&lt;h1&gt;알고리즘 정확도 측정&lt;/h1&gt;
-&lt;p&gt;학습에 동원되지 않은 데이터로 에러 측정&lt;br /&gt;
-K-folder Cross Validation (CV)  &lt;/p&gt;
-&lt;h2&gt;항상 지켜야 될 원칙&lt;/h2&gt;
-&lt;p&gt;훈련에 쓰지 않는 데이터로 에러 측정 &lt;/p&gt;
-&lt;h2&gt;Dimension의 저주&lt;/h2&gt;
-&lt;p&gt;각 데이터가 10개의 속성이 있을 때 $10^{10} \:?? $&lt;/p&gt;
-&lt;h1&gt;Feature mapping&lt;/h1&gt;
-&lt;div class="math"&gt;$$ \overrightarrow{z} = \phi(\overrightarrow{x}) $$&lt;/div&gt;
-&lt;p&gt;&lt;br /&gt;
-&lt;/p&gt;
-&lt;div class="math"&gt;$$ \frac{1}{wt} = \phi(wt) \Rightarrow mpg = w_0 + w_1 \frac{1}{wt}$$&lt;/div&gt;
-&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var align = "center",
-        indent = "0em",
-        linebreak = "false";
-
-    if (false) {
-        align = (screen.width &lt; 768) ? "left" : align;
-        indent = (screen.width &lt; 768) ? "0em" : indent;
-        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
-    }
-
-    var mathjaxscript = document.createElement('script');
-    var location_protocol = (false) ? 'https' : document.location.protocol;
-    if (location_protocol !== 'http' &amp;&amp; location_protocol !== 'https') location_protocol = 'https:';
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: '"+ align +"'," +
-        "    displayIndent: '"+ indent +"'," +
-        "    showMathMenu: true," +
-        "    messageStyle: 'normal'," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
-        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
-        "    }, " +
-        "}); " +
-        "if ('default' !== 'default') {" +
-            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-        "}";
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-&lt;/script&gt;</summary><category term="'Machine&amp;nbsp"></category><category term="Learning'"></category></entry><entry><title>"MLE"</title><link href="https://freeeebie.github.io/mle.html" rel="alternate"></link><published>2016-09-18T15:51:26+09:00</published><updated>2016-09-18T15:51:26+09:00</updated><author><name>freeeebie</name></author><id>tag:freeeebie.github.io,2016-09-18:mle.html</id><summary type="html">&lt;h1&gt;최우도 추정&lt;/h1&gt;
-&lt;p&gt;Maximum likelihood estimation&lt;br /&gt;
-데이터들이 어떤 확률 분포에 가까운지 추정하는 방법 중 하나.  &lt;/p&gt;
-&lt;div class="math"&gt;$$D = {x_1, x_2,\cdots,x_N}$$&lt;/div&gt;
-&lt;p&gt;
-일 때, 
-데이터 집합의 정규분포의 위치와 모양을 결정 짓는 매개 변수 &lt;span class="math"&gt;\(\mu\)&lt;/span&gt; 와 &lt;span class="math"&gt;\(\sigma^2\)&lt;/span&gt; 를 구한다면,&lt;br /&gt;
-우도  &lt;span class="math"&gt;\(L(D, \mu, \sigma)\)&lt;/span&gt;&lt;br /&gt;
-여기에 로그를 취하면, &lt;span class="math"&gt;\(\mathcal{L}(D, \mu, \sigma)\)&lt;/span&gt;  &lt;/p&gt;
-&lt;p&gt;최우도 추정은 우도를 편미분하여 최대값을 구한다.&lt;br /&gt;
-&lt;/p&gt;
-&lt;div class="math"&gt;$$ \hat\mu = \Sigma_i x^i/N \Leftrightarrow \partial L(D, \mu, \sigma)$$&lt;/div&gt;
-&lt;p&gt;&lt;br /&gt;
-&lt;/p&gt;
-&lt;div class="math"&gt;$$ \hat\sigma^2 = \Sigma_i (x_i - \hat\mu)^2 / N \Leftrightarrow \partial \mathcal{L}(D, \mu, \sigma) $$&lt;/div&gt;
-&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var align = "center",
-        indent = "0em",
-        linebreak = "false";
-
-    if (false) {
-        align = (screen.width &lt; 768) ? "left" : align;
-        indent = (screen.width &lt; 768) ? "0em" : indent;
-        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
-    }
-
-    var mathjaxscript = document.createElement('script');
-    var location_protocol = (false) ? 'https' : document.location.protocol;
-    if (location_protocol !== 'http' &amp;&amp; location_protocol !== 'https') location_protocol = 'https:';
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: '"+ align +"'," +
-        "    displayIndent: '"+ indent +"'," +
-        "    showMathMenu: true," +
-        "    messageStyle: 'normal'," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
-        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
-        "    }, " +
-        "}); " +
-        "if ('default' !== 'default') {" +
-            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-        "}";
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-&lt;/script&gt;</summary><category term="math"></category></entry><entry><title>"확률"</title><link href="https://freeeebie.github.io/hwagryul.html" rel="alternate"></link><published>2016-09-17T00:27:19+09:00</published><updated>2016-09-17T00:27:19+09:00</updated><author><name>freeeebie</name></author><id>tag:freeeebie.github.io,2016-09-17:hwagryul.html</id><summary type="html">&lt;h1&gt;확률분포&lt;/h1&gt;
-&lt;h2&gt;Random Variable(확률변수)&lt;/h2&gt;
-&lt;p&gt;정의  &lt;/p&gt;
-&lt;div class="math"&gt;$$ X:\Omega\Rightarrow R $$&lt;/div&gt;
-&lt;p&gt;&lt;br /&gt;
-X: 함수&lt;/p&gt;
-&lt;p&gt;이산확률변수&lt;br /&gt;
-&lt;span class="math"&gt;\(P(X=k)= P(\{w:X(w)=k\})\)&lt;/span&gt;&lt;/p&gt;
-&lt;h2&gt;Joint probability(결합확률)&lt;/h2&gt;
+&lt;p&gt;이러한 모델의 단점은 우선  Pronouncation dictionary 가 필요하다는 것이다. Speech recognition system 을 트레인 시키기 위하여 사용되는 transcription 은 어휘인데 반해 네트워크가 제시하는 것은 음소이다. 그러므로 단어들을 음소의 모음으로 매핑 시키기 위해서 pronunciation dictionary 가 필요하다. 즉, '한강' 이라는 단어를 train 한다면 나오는 결과가 'ㅎ ㅏ ㄴ ㄱ ㅏ ㅇ' 인 음소의 나열이 나온다는 의미로 보인다. 이것을 원래 단어와 매핑 시키기 위하여 사전이 필요하다는 것이고 이것은 사람이 일일이 만들어야 하는 수고가 필요하다는 것이다.  &lt;/p&gt;
+&lt;p&gt;또한 language model (https://en.wikipedia.org/wiki/Language_model)이 필요하다는 것이다. HMM 에 의해 산출된 accoustic score 는 text corpus 를 train 한 language model 과 결합된다. 이러한 약점들을 극복하기 위하여 하나의 네트워크로 음성 인식이 가능한 End-to-end Speech Recognition 이 출현하게 된 것이다. &lt;/p&gt;
+&lt;p&gt;음성 인식 문서를 읽다보면 자주 나오는 용어들이 있다. 여기서 잠시 용어를 정리하면,  &lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;확률질량함수&lt;br /&gt;
-이산데이터에 대하여 누적 확률  &lt;/li&gt;
-&lt;li&gt;누적분포함수 (CDF)&lt;br /&gt;
-    확률값을 적분한 것. 1에 수렴 &lt;/li&gt;
-&lt;li&gt;확률밀도함수&lt;br /&gt;
-누적분포를 미분한 것 &lt;/li&gt;
+&lt;li&gt;phonetic, phoneme : 음소. 더 이상 작게 나눌 수 없는 음운론상의 최소 단위라고 한다. 낱소리라고도 한다.   한국어에서는 쉽게 자음과 모음이라고 생각하면 된다. &lt;/li&gt;
+&lt;li&gt;lexical, lexicon : lexical 은 어휘라는 뜻이고, lexicon은 사전이란 뜻으로 음성인식에서는 어휘 목록이라는 의미로 사용된다. &lt;/li&gt;
+&lt;li&gt;text corpus&lt;/li&gt;
+&lt;li&gt;transcription : 구술된 내용을 글로 옯김. &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;Maginary probability(주변확률)&lt;/h2&gt;
-&lt;p&gt;두 변수중 한가지 확률변수 계산&lt;br /&gt;
-왜  maginary 인가?? table 로 표현하면 주분에 위치하므로, &lt;/p&gt;
-&lt;h2&gt;Conditional PMF (조건부 확률)&lt;/h2&gt;
-&lt;div class="math"&gt;$$P_{Y|X} (y|x) =   $$&lt;/div&gt;
-&lt;div class="math"&gt;$${P_{XY}(x,y)} \over {P_X(x)} $$&lt;/div&gt;
-&lt;p&gt;random variable X의 값이 x라고 알려져 있을 때, Y가 y일 확률&lt;/p&gt;
-&lt;h3&gt;Product rule&lt;/h3&gt;
-&lt;p&gt;conditional PMF 의 정의로 구함&lt;br /&gt;
-&lt;/p&gt;
-&lt;div class="math"&gt;$$P_{Y|X} (y|x) = P(y|x)P(x) = P(x|y)P(y)$$&lt;/div&gt;
-&lt;h2&gt;대표적 연속 확률 분포&lt;/h2&gt;
-&lt;h3&gt;정규분포&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;가우스 분포 &lt;/li&gt;
-&lt;li&gt;$ X \thicksim N(\mu, \sigma^2) $&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;PDF&lt;br /&gt;
-&lt;div class="math"&gt;$$ f_X(x) = \frac {1}{\sqrt{2\pi\sigma^2}}exp[-\frac{(x-\mu)^2}{2\sigma^2}]  $$&lt;/div&gt;
-&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;span class="math"&gt;\(E[x] = \mu\)&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;span class="math"&gt;\(var[x] = \sigma^2\)&lt;/span&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;대표적 이산 확률 분포&lt;/h2&gt;
-&lt;h3&gt;베르누이 분포&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;PMF&lt;br /&gt;
-&lt;div class="math"&gt;$$ P_X(x) = 
-\left\{ \begin{array}{rcl}
-         p &amp;amp; \mbox{if}
-         &amp;amp; x = 1 \\ 1-p &amp;amp; \mbox{if} &amp;amp; x = 0
-                \end{array}\right.
-$$&lt;/div&gt;
-&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;$E[X] = P $&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;$Var[X] = P(1-P) $ &lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;이항분포&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;Binomial Distribution &lt;/li&gt;
-&lt;li&gt;$ X \thicksim Binom(n,p) $&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;PMF&lt;br /&gt;
-&lt;div class="math"&gt;$$ P_X(X) = 
-\left( \begin{array}{c} n \\ x \end{array} \right) p^x(1-p)^{n-x}
-$$&lt;/div&gt;
-&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;span class="math"&gt;\(E[x] = \Sigma E[x_i] = np\)&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;span class="math"&gt;\(Var[x] = \Sigma Var[X_i] = np(1-p)\)&lt;/span&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var align = "center",
-        indent = "0em",
-        linebreak = "false";
-
-    if (false) {
-        align = (screen.width &lt; 768) ? "left" : align;
-        indent = (screen.width &lt; 768) ? "0em" : indent;
-        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
-    }
-
-    var mathjaxscript = document.createElement('script');
-    var location_protocol = (false) ? 'https' : document.location.protocol;
-    if (location_protocol !== 'http' &amp;&amp; location_protocol !== 'https') location_protocol = 'https:';
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: '"+ align +"'," +
-        "    displayIndent: '"+ indent +"'," +
-        "    showMathMenu: true," +
-        "    messageStyle: 'normal'," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
-        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
-        "    }, " +
-        "}); " +
-        "if ('default' !== 'default') {" +
-            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-        "}";
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-&lt;/script&gt;</summary><category term='"Math"'></category></entry><entry><title>"MFCC와 GMM 사용하여 음원 분류"</title><link href="https://freeeebie.github.io/mfccwa-gmm-sayonghayeo-eumweon-bunryu.html" rel="alternate"></link><published>2016-09-11T21:49:31+09:00</published><updated>2016-09-11T21:49:31+09:00</updated><author><name>freeeebie</name></author><id>tag:freeeebie.github.io,2016-09-11:mfccwa-gmm-sayonghayeo-eumweon-bunryu.html</id><summary type="html">&lt;h1&gt;Sound 분류&lt;/h1&gt;
-&lt;p&gt;MFCC 와 GMM 을 사용하여 음원 파일을 인식하여 분류함  &lt;/p&gt;
-&lt;h2&gt;precedure&lt;/h2&gt;
-&lt;ol&gt;
-&lt;li&gt;trainging data 의 MFCC 추출  &lt;/li&gt;
-&lt;li&gt;각 training data 에 대한 GMM 생성  &lt;/li&gt;
-&lt;li&gt;입력 음원에 대하여 MFCC 추출  &lt;/li&gt;
-&lt;li&gt;각 GMM 에 대하여 확률을 계산하여 best 한 GMM 모델을 선택  &lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2&gt;GMM&lt;/h2&gt;
-&lt;p&gt;clustering 기법&lt;br /&gt;
-EM algorithm 사용  &lt;/p&gt;</summary></entry><entry><title>"MFCC"</title><link href="https://freeeebie.github.io/mfcc.html" rel="alternate"></link><published>2016-09-11T19:16:07+09:00</published><updated>2016-09-11T19:16:07+09:00</updated><author><name>freeeebie</name></author><id>tag:freeeebie.github.io,2016-09-11:mfcc.html</id><summary type="html">&lt;p&gt;음성 데이터의 특징 추출&lt;br /&gt;
-성대의 떨림은 고유함.성도를 system H 라고 가정하여&lt;br /&gt;
-이 시스템 H의 특징을 찾음.  &lt;/p&gt;
-&lt;p&gt;1 step&lt;br /&gt;
-시그널을 일정 frame 단위로 나눔.&lt;br /&gt;
-windowing 실행&lt;br /&gt;
-2 step&lt;br /&gt;
-해당 frame에 Fourier Transform을 실행하여 power spectrum 을 구함.&lt;br /&gt;
-3 step&lt;br /&gt;
-mel filter bank 적용&lt;br /&gt;
-4 step&lt;br /&gt;
-log 적용&lt;br /&gt;
-5 step&lt;br /&gt;
-DCT 실행&lt;br /&gt;
-6 step&lt;br /&gt;
-liftering 실행  &lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;reference&lt;br /&gt;
-https://en.wikipedia.org/wiki/Mel-frequency_cepstrum&lt;br /&gt;
-http://practicalcryptography.com/miscellaneous/machine-learning/guide-mel-frequency-cepstral-coefficients-mfccs/  &lt;/p&gt;</summary><category term='"Machine&amp;nbsp'></category><category term='Learning"'></category></entry><entry><title>First Post</title><link href="https://freeeebie.github.io/first-post.html" rel="alternate"></link><published>2016-06-08T20:00:00+09:00</published><updated>2016-06-08T20:00:00+09:00</updated><author><name>me</name></author><id>tag:freeeebie.github.io,2016-06-08:first-post.html</id><summary type="html">&lt;style type="text/css"&gt;/*!
+&lt;p&gt;이 논문에서는  Spectrogram 을 최소한의 preprocession scheme 으로 사용하였다. Spectrogram 은 신호를 x축은 시간, y축은 주파수로 설정하고, 진폭의 차이에 따라 농도나 색상으로 나타내는 것을 의미한다.  &lt;/p&gt;
+&lt;h2&gt;Network architecture&lt;/h2&gt;
+&lt;p&gt;이 논문을 이해하려고 한다면 선행적으로 RNN 과 LSTM 에 대한 이해를 해야 한다. &lt;/p&gt;
+&lt;p&gt;RNN 은 아래에 잘 설명이 되어 있다. &lt;/p&gt;
+&lt;p&gt;http://aikorea.org/blog/rnn-tutorial-1/&lt;/p&gt;</content><category term='"Machine&amp;nbsp'></category><category term='Learning"'></category></entry><entry><title>HMM Introduction</title><link href="https://freeeebie.github.io/hmm-introduction.html" rel="alternate"></link><published>2017-02-26T14:00:00+09:00</published><updated>2017-02-26T14:00:00+09:00</updated><author><name>me</name></author><id>tag:freeeebie.github.io,2017-02-26:/hmm-introduction.html</id><summary type="html">&lt;p&gt;Hidden Markov Model(HMM)이란 Markov Model 중 state 변화에 대하여 관찰자는 알지 못하고, 단지 결과만을 관측할 수 있는 Model 을 의미한다. 즉, state 변화가 hidden 되어 있다는 의미이다.&lt;/p&gt;</summary><content type="html">&lt;style type="text/css"&gt;/*!
 *
 * IPython notebook
 *
@@ -1292,8 +945,10 @@ h6:hover .anchor-link {
 .highlight .mh { color: #666666 } /* Literal.Number.Hex */
 .highlight .mi { color: #666666 } /* Literal.Number.Integer */
 .highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
 .highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
 .highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
 .highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
 .highlight .s2 { color: #BA2121 } /* Literal.String.Double */
 .highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
@@ -1304,9 +959,11 @@ h6:hover .anchor-link {
 .highlight .s1 { color: #BA2121 } /* Literal.String.Single */
 .highlight .ss { color: #19177C } /* Literal.String.Symbol */
 .highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
 .highlight .vc { color: #19177C } /* Name.Variable.Class */
 .highlight .vg { color: #19177C } /* Name.Variable.Global */
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */&lt;/style&gt;
 &lt;style type="text/css"&gt;
 /* Temporary definitions which will become obsolete with Notebook release 5.0 */
@@ -1350,159 +1007,260 @@ h6:hover .anchor-link {
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h1 id="First-post!"&gt;First post!&lt;a class="anchor-link" href="#First-post!"&gt;&amp;#182;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;This will be the first post in our new Pelican blog! You can add any code or markdown cells to this Jupyter notebook, and they will be rendered on your blog.&lt;/p&gt;
-
+&lt;h2 id="Hidden-Markov-Model-Introduction"&gt;Hidden Markov Model Introduction&lt;a class="anchor-link" href="#Hidden-Markov-Model-Introduction"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Hidden Markov Model(HMM)이란 Markov Model 중 state 변화에 대하여 관찰자는 알지 못하고, 단지 결과만을 관측할 수 있는 Model 을 의미한다. 즉, state 변화가 hidden 되어 있다는 의미이다.&lt;br /&gt;
+아래는 위키피디아에서 제시한 예제인데 이를 보면 HMM에 대하여 이해하기 수월하다.&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;관측자에게 보이지 않는 방이 있고, 그 안에 요정이 있다.방에는 항아리 $ X1,X2,X3,... $
+    가 존재한다. 각각의 항아리에는 $ y_1,y_2,y_3,...$으로 이름이 붙은 공들이 섞여서 들어가 있고, 항아리의 공들이 섞인 상태는 알려져있다. 요정은 방 안의 항아리를 하나 고르고, 항아리 안에서 무작위로 공을 하나 꺼내어 컨베이어 벨트에 올려둔다. 관측자는 컨베이어 벨트 위의 공의 순서를 관측할 수는 있지만, 해당 공들이 뽑혔던 항아리의 순서는 알 수 없다. 요정이 공을 뽑을 항아리를 고를 때는 다음과 같은 특별한 규칙을 따른다 : n번째 공을 뽑기 위한 항아리는 무작위 숫자와 (n-1)번째 공을 뽑기 위해 선택한 항아리에만 영향을 받는다. 현재 항아리로부터 하나보다 더 전에 선택된 항아리는 현재 항아리의 선택에 직접적으로 영향을 주지 않는다. (&lt;a href="https://ko.wikipedia.org/wiki/%EC%9D%80%EB%8B%89_%EB%A7%88%EB%A5%B4%EC%BD%94%ED%94%84_%EB%AA%A8%EB%8D%B8"&gt;https://ko.wikipedia.org/wiki/%EC%9D%80%EB%8B%89_%EB%A7%88%EB%A5%B4%EC%BD%94%ED%94%84_%EB%AA%A8%EB%8D%B8&lt;/a&gt;)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="HMM-구현"&gt;HMM 구현&lt;a class="anchor-link" href="#HMM-구현"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;HMM 구현을 위하여 새로운 예제를 하나더 제시하겠다. 이 또한 위키피디아에서 제시한 내용이다.
+한 마을에 사람들이 있는데 그들의 건강 상태는 healthy, fever 두 상태가 있고 이에 대하여서는 오직 의사만이 결정할 수 있다. 이 의사는 환자에게 그들의 느낌을 물어서 건강 상태를 진단한다. 마을 사람들은 의사의 물음에 대하여 normal, dizzy, cold로 대답할 수 있다.&lt;br /&gt;
+의사는 건강 상태는 discrete MM 에 따른다고 믿고 있다. 여기서 상태는 healthy, fever 이고 이에 대하여서는 직접 알 방안은 없다. 단지 관찰값(환자의 대답)만이 주어질 뿐이다. (&lt;a href="https://en.wikipedia.org/wiki/Viterbi_algorithm#Example"&gt;https://en.wikipedia.org/wiki/Viterbi_algorithm#Example&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;이에 대하여 코드로 구현하여 보도록 하겠다. 코드는 위의 위키피디아와 아래 사이트를 참고하였다. 
+(&lt;a href="http://www.blackarbs.com/blog/introduction-hidden-markov-models-python-networkx-sklearn/2/9/2017"&gt;http://www.blackarbs.com/blog/introduction-hidden-markov-models-python-networkx-sklearn/2/9/2017&lt;/a&gt;)&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="State-정의"&gt;State 정의&lt;a class="anchor-link" href="#State-정의"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;우선 state 에 대하여 정의해보도록 하자. 여기서 state 는 환자의 상태, 즉 healthy 와 fever 이고, 시작 상태에 대한 확률, 즉 마을 주민들이 건강할 확률, 열이 있을 확률을 0.6 과 0.4 로 임의로 정했다.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[2]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In [2]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
-    &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;random&lt;/span&gt;
-
-&lt;span class="n"&gt;random&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;randint&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class="output_wrapper"&gt;
-&lt;div class="output"&gt;
-
-
-&lt;div class="output_area"&gt;&lt;div class="prompt output_prompt"&gt;Out[2]:&lt;/div&gt;
-
-
-&lt;div class="output_text output_subarea output_execute_result"&gt;
-&lt;pre&gt;4&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing code_cell rendered"&gt;
-&lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[4]:&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-    &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;plt&lt;/span&gt;
+&lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;np&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pandas&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;pd&lt;/span&gt;
 
 &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="k"&gt;matplotlib&lt;/span&gt; inline
 
-&lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;hist&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+&lt;span class="n"&gt;states&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'Healthy'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'Fever'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;start_prob&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mf"&gt;0.6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;0.4&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;state_space&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Series&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;start_prob&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;states&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'states'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;state_space&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;start_p&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{}&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;st&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;enumerate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;states&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;start_p&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;start_prob&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;start_p&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
-
-
-&lt;div class="output_area"&gt;&lt;div class="prompt output_prompt"&gt;Out[4]:&lt;/div&gt;
-
-
-&lt;div class="output_text output_subarea output_execute_result"&gt;
-&lt;pre&gt;(array([ 2.,  1.,  1.,  0.,  2.,  0.,  1.,  0.,  0.,  2.]),
- array([  1. ,   1.9,   2.8,   3.7,   4.6,   5.5,   6.4,   7.3,   8.2,
-          9.1,  10. ]),
- &amp;lt;a list of 10 Patch objects&amp;gt;)&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-
 &lt;div class="output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
-
-
-&lt;div class="output_png output_subarea "&gt;
-&lt;img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXcAAAEACAYAAABI5zaHAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
-AAALEgAACxIB0t1+/AAADOtJREFUeJzt3H+o3fV9x/HnK4syO1FWoZGZGVer3Sp0WRlWJ8Mz+keN
-ZWZ/lNVacLVQpKtoVxhtXSHJf9tgDF0tGmallrpK3agZ/pgTeykKFX9lSjVtpExjOjOGhqKRzR/v
-/XGP4e56k3Ny7zn39L73fMCB8+PD97y/ucnzfs/35ntTVUiSelk36wEkSZNn3CWpIeMuSQ0Zd0lq
-yLhLUkPGXZIaGhn3JBuTPJDkR0meSnL1EdZdn2Rvkt1JNk9+VEnSuNaPseYN4ItVtTvJicBjSe6r
-qj1vL0iyBTizqs5K8mHgRuC86YwsSRpl5JF7Vb1YVbuH918BngFOW7RsK3DrcM3DwMlJNkx4VknS
-mI7pnHuSM4DNwMOLXjoN2Lfg8X7e+Q1AkrRKxo778JTMHcA1wyN4SdIvqHHOuZNkPfNh/1ZV3bnE
-kv3Ary94vHH43OLt+ItsJGkZqirHsn7cI/dvAE9X1XVHeH0XcDlAkvOAg1V14AgDrsrtpptu4oQT
-PgvUFG93cf75Ww6/57Zt21Zt/2Zxm8T+Df8WTPm2vL9nnb9+s9y3X+Sv+Vq5LcfII/ckFwCfAp5K
-8sTwT/JaYNP8n2ftrKq7k1yc5FngVeCKZU0jSZqIkXGvqoeAXxpj3VUTmUiStGJeoTpBg8Fg1iNM
-lfu3dnXeNy3NuE9Q939A7t/a1XnftDTjLkkNGXdJasi4S1JDxl2SGjLuktSQcZekhoy7JDVk3CWp
-IeMuSQ0Zd0lqyLhLUkPGXZIaMu6S1JBxl6SGjLskNWTcJakh4y5JDRl3SWrIuEtSQ8Zdkhoy7pLU
-kHGXpIaMuyQ1ZNwlqSHjLkkNGXdJasi4S1JDxl2SGjLuktSQcZekhoy7JDVk3CWpIeMuSQ0Zd0lq
-yLhLUkPGXZIaMu6S1JBxl6SGjLskNWTcJakh4y5JDRl3SWrIuEtSQ8Zdkhoy7pLU0Mi4J7k5yYEk
-Tx7h9QuTHEzy+PD21cmPKUk6FuvHWHML8HfArUdZ84OqumQyI0mSVmrkkXtVPQi8PGJZJjOOJGkS
-JnXO/fwku5PcleQDE9qmJGmZxjktM8pjwOlVdSjJFuB7wNlHWrx9+/bD9weDAYPBYAIjSFIfc3Nz
-zM3NrWgbK457Vb2y4P49Sb6e5N1V9dJS6xfGXZL0TosPfHfs2HHM2xj3tEw4wnn1JBsW3D8XyJHC
-LklaHSOP3JPcBgyAU5I8D2wDjgeqqnYCH0/yOeB14DXgE9MbV5I0jpFxr6rLRrx+A3DDxCaSJK2Y
-V6hKUkPGXZIaMu6S1JBxl6SGjLskNWTcJakh4y5JDRl3SWrIuEtSQ8Zdkhoy7pLUkHGXpIaMuyQ1
-ZNwlqSHjLkkNGXdJasi4S1JDxl2SGjLuktSQcZekhoy7JDVk3CWpIeMuSQ0Zd0lqyLhLUkPGXZIa
-Mu6S1JBxl6SGjLskNWTcJakh4y5JDRl3SWrIuEtSQ8Zdkhoy7pLUkHGXpIaMuyQ1ZNwlqSHjLkkN
-GXdJasi4S1JDxl2SGjLuktSQcZekhoy7JDVk3CWpIeMuSQ2NjHuSm5McSPLkUdZcn2Rvkt1JNk92
-REnSsRrnyP0W4KNHejHJFuDMqjoLuBK4cUKzSZKWaWTcq+pB4OWjLNkK3Dpc+zBwcpINkxlPkrQc
-kzjnfhqwb8Hj/cPnJEkzsn6133D79u2H7w8GAwaDwWqPMFGPPvoQSab6HuvWvYu33jo01ffYsGET
-L77471N9j05OPfUMDhx4bqrv4dfk/6+5uTnm5uZWtI1U1ehFySbgn6vqg0u8diPw/aq6ffh4D3Bh
-VR1YYm2N836TsHPnTr7whUd57bWdU3yXu4GPAdPep6zKe6zG12b+G+Ha35cu+7Ea/LNauSRU1TEd
-RY57WibD21J2AZcPBzgPOLhU2CVJq2fkaZkktwED4JQkzwPbgOOBqqqdVXV3kouTPAu8ClwxzYEl
-SaONjHtVXTbGmqsmM44kaRK8QlWSGjLuktSQcZekhoy7JDVk3CWpIeMuSQ0Zd0lqyLhLUkPGXZIa
-Mu6S1JBxl6SGjLskNWTcJakh4y5JDRl3SWrIuEtSQ8Zdkhoy7pLUkHGXpIaMuyQ1ZNwlqSHjLkkN
-GXdJasi4S1JDxl2SGjLuktSQcZekhoy7JDVk3CWpIeMuSQ0Zd0lqyLhLUkPGXZIaMu6S1JBxl6SG
-jLskNWTcJakh4y5JDRl3SWrIuEtSQ8Zdkhoy7pLUkHGXpIaMuyQ1ZNwlqSHjLkkNGXdJamisuCe5
-KMmeJD9J8qUlXr8wycEkjw9vX538qJKkca0ftSDJOuBrwEeAnwGPJLmzqvYsWvqDqrpkCjNKko7R
-OEfu5wJ7q+q5qnod+A6wdYl1mehkkqRlGyfupwH7Fjx+YfjcYucn2Z3kriQfmMh0kqRlGXlaZkyP
-AadX1aEkW4DvAWcvtXD79u2H7w8GAwaDwYRGkKQe5ubmmJubW9E2xon7fuD0BY83Dp87rKpeWXD/
-niRfT/Luqnpp8cYWxl2S9E6LD3x37NhxzNsY57TMI8D7kmxKcjxwKbBr4YIkGxbcPxfIUmGXJK2O
-kUfuVfVmkquA+5j/ZnBzVT2T5Mr5l2sn8PEknwNeB14DPjHNoSVJRzfWOfequhd4/6Lnblpw/wbg
-hsmOJklaLq9QlaSGjLskNWTcJakh4y5JDRl3SWrIuEtSQ8Zdkhoy7pLUkHGXpIaMuyQ1ZNwlqSHj
-LkkNGXdJasi4S1JDxl2SGjLuktSQcZekhoy7JDVk3CWpIeMuSQ0Zd0lqyLhLUkPGXZIaMu6S1JBx
-l6SGjLskNWTcJakh4y5JDRl3SWrIuEtSQ8Zdkhoy7pLUkHGXpIaMuyQ1ZNwlqSHjLkkNGXdJasi4
-S1JDxl2SGjLuktSQcZekhoy7JDVk3CWpIeMuSQ0Zd0lqyLhLUkNjxT3JRUn2JPlJki8dYc31SfYm
-2Z1k82THlCQdi5FxT7IO+BrwUeAc4JNJfnPRmi3AmVV1FnAlcOMUZl0D5mY9wFTNzc3NeoSp6rx/
-nfdNSxvnyP1cYG9VPVdVrwPfAbYuWrMVuBWgqh4GTk6yYaKTrglzsx5gqroHovP+dd43LW2cuJ8G
-7Fvw+IXhc0dbs3+JNZKkVbJ+1gNMy3HHHUfVvZx00h9O7T3eeOMAhw5NbfOStGypqqMvSM4DtlfV
-RcPHXwaqqv5qwZobge9X1e3Dx3uAC6vqwKJtHf3NJElLqqocy/pxjtwfAd6XZBPwH8ClwCcXrdkF
-fB64ffjN4ODisC9nOEnS8oyMe1W9meQq4D7mz9HfXFXPJLly/uXaWVV3J7k4ybPAq8AV0x1bknQ0
-I0/LSJLWnlW7QnWcC6HWqiQbkzyQ5EdJnkpy9axnmrQk65I8nmTXrGeZtCQnJ/lukmeGX8MPz3qm
-SUryleF+PZnk20mOn/VMK5Hk5iQHkjy54LlfTXJfkh8n+ZckJ89yxpU4wv799fDv5+4k/5jkpFHb
-WZW4j3Mh1Br3BvDFqjoHOB/4fLP9A7gGeHrWQ0zJdcDdVfVbwG8Dz8x4nokZ/qzss8DvVNUHmT8V
-e+lsp1qxW5hvyUJfBu6vqvcDDwBfWfWpJmep/bsPOKeqNgN7GWP/VuvIfZwLodasqnqxqnYP77/C
-fBza/D//JBuBi4G/n/UskzY8Avr9qroFoKreqKqfz3isSfo58D/AryRZD7wL+NlsR1qZqnoQeHnR
-01uBbw7vfxP4o1UdaoKW2r+qur+q3ho+/CGwcdR2Vivu41wI1UKSM4DNwMOznWSi/hb4c6DjD2h+
-A/ivJLcMTzvtTHLCrIealKp6Gfgb4HnmLy48WFX3z3aqqXjP2/9Dr6peBN4z43mm6TPAPaMW+Vsh
-JyjJicAdwDXDI/g1L8nHgAPDTyYZ3jpZD3wIuKGqPgQcYv4jfgtJ3gv8GbAJ+DXgxCSXzXaqVdHx
-QIQkfwG8XlW3jVq7WnHfD5y+4PHG4XNtDD/y3gF8q6runPU8E3QBcEmSnwL/APxBkltnPNMkvQDs
-q6pHh4/vYD72Xfwu8FBVvVRVbwL/BPzejGeahgNv/z6rJKcC/znjeSYuyaeZPz061jfn1Yr74Quh
-hj+pv5T5C586+QbwdFVdN+tBJqmqrq2q06vqvcx/3R6oqstnPdekDD/K70ty9vCpj9DrB8c/Bs5L
-8stJwvz+dfiB8eJPkbuATw/v/wmw1g+w/s/+JbmI+VOjl1TVf4+zgVX53TJHuhBqNd57NSS5APgU
-8FSSJ5j/SHhtVd0728k0pquBbyc5DvgpjS7Cq6p/G37Segx4E3gC2DnbqVYmyW3AADglyfPANuAv
-ge8m+QzwHPDHs5twZY6wf9cCxwP/Ov89mh9W1Z8edTtexCRJ/fgDVUlqyLhLUkPGXZIaMu6S1JBx
-l6SGjLskNWTcJakh4y5JDf0vZB9FlJ1A1boAAAAASUVORK5CYII=
-"&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-
+&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
+&lt;pre&gt;Healthy    0.6
+Fever      0.4
+Name: states, dtype: float64
+{'Healthy': 0.6, 'Fever': 0.4}
+&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;s각 state 에 대한 transition probablity에 대한 matrix 는 아래와 같이 구성한다.&lt;br /&gt;
+H -&gt; H = 0.7&lt;br /&gt;
+H -&gt; F = 0.3&lt;br /&gt;
+F -&gt; H = 0.4&lt;br /&gt;
+F -&gt; F = 0.6&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[&amp;nbsp;]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In [3]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
-    &lt;div class="input_area"&gt;
+&lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# transition probability matrix &lt;/span&gt;
+
+&lt;span class="n"&gt;trans_df&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DataFrame&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;columns&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;states&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;states&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;trans_df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;loc&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;states&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mf"&gt;0.7&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;0.3&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;trans_df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;loc&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;states&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mf"&gt;0.4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;0.6&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;trans_df&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;trans_mat&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;trans_df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;values&lt;/span&gt;
+
+&lt;span class="n"&gt;trans_p&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{}&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;row&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;enumerate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;trans_mat&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;temp&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{}&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;enumerate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;temp&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;states&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt;
+    &lt;span class="n"&gt;trans_p&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;states&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;temp&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;trans_p&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+&lt;div class="output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
+&lt;pre&gt;        Healthy Fever
+Healthy     0.7   0.3
+Fever       0.4   0.6
+{'Healthy': {'Healthy': 0.7, 'Fever': 0.3}, 'Fever': {'Healthy': 0.4, 'Fever': 0.6}}
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="Observation-probability"&gt;Observation probability&lt;a class="anchor-link" href="#Observation-probability"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;observation probability 는 해당 상태일때, 관찰값이 나올 확률이다. 
+즉, 여기서는 건강한 상태일 때 보통이라고 느낄 확률, 어지럽다고 느낄 확률, 춥다고 느낄 확률 등을 나타낸다. 
+이 확률에 대한 matrix 는 state 갯수 X observation 이 된다.&lt;/p&gt;
+&lt;p&gt;이 예제에서는 아래와 같이 정의하였다.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [4]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;observable_states&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'Normal'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'Cold'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'Dizzy'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;emit_df&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DataFrame&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;columns&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;observable_states&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;states&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;emit_df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;loc&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;states&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mf"&gt;0.5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;0.4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;0.1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;emit_df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;loc&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;states&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mf"&gt;0.1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;0.3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;0.6&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;emit_df&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;emit_mat&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;emit_df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;values&lt;/span&gt;
+
+&lt;span class="n"&gt;emit_p&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{}&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;row&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;enumerate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;emit_mat&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;temp&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{}&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;enumerate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;temp&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;observable_states&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt;
+    &lt;span class="n"&gt;emit_p&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;states&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;temp&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;emit_p&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+&lt;div class="output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
+&lt;pre&gt;        Normal Cold Dizzy
+Healthy    0.5  0.4   0.1
+Fever      0.1  0.3   0.6
+{'Healthy': {'Cold': 0.4, 'Dizzy': 0.1, 'Normal': 0.5}, 'Fever': {'Cold': 0.3, 'Dizzy': 0.6, 'Normal': 0.1}}
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="Viterbi-Algorithm"&gt;Viterbi Algorithm&lt;a class="anchor-link" href="#Viterbi-Algorithm"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;위의 예시에서 만약 의사가 삼일 동안 한명의 환자를 문진하였는데, 첫날은 normal, 두째날은 cold, 셋째날은 dizzy 가 그녀의 느낌이라면, 이러한 관찰 결과를 통하여 환자의 상태가 어떻게 변하였는지 알 수 있을까?&lt;br /&gt;
+즉, observation sequence 가 주어졌을 때 가장 확률이 높은 state transition sequence 는 어떻게 찾을 수 있을까?&lt;br /&gt;
+이를 찾는 알고리즘이 Viterbi Algorithm 이다.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [5]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;viterbi&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;obs&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;states&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;start_p&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;trans_p&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;emit_p&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;V&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[{}]&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;st&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;states&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;V&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;"prob"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;start_p&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;emit_p&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="n"&gt;obs&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]],&lt;/span&gt; &lt;span class="s2"&gt;"prev"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+     &lt;span class="c1"&gt;# Run Viterbi when t &gt; 0&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;obs&lt;/span&gt;&lt;span class="p"&gt;)):&lt;/span&gt;
+        &lt;span class="n"&gt;V&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;({})&lt;/span&gt;
+        &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;st&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;states&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;max_tr_prob&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;max&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;V&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="n"&gt;prev_st&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="s2"&gt;"prob"&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;trans_p&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;prev_st&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;prev_st&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;states&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;prev_st&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;states&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+                &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;V&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="n"&gt;prev_st&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="s2"&gt;"prob"&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;trans_p&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;prev_st&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="n"&gt;max_tr_prob&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+                    &lt;span class="n"&gt;max_prob&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;max_tr_prob&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;emit_p&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="n"&gt;obs&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt;
+                    &lt;span class="n"&gt;V&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;"prob"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;max_prob&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"prev"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;prev_st&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+                    &lt;span class="k"&gt;break&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;dptable&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;V&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;opt&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;
+    &lt;span class="c1"&gt;# The highest probability&lt;/span&gt;
+    &lt;span class="n"&gt;max_prob&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;max&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"prob"&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;V&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;values&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+    &lt;span class="n"&gt;previous&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;
+    &lt;span class="c1"&gt;# Get most probable state and its backtrack&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;V&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;items&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"prob"&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="n"&gt;max_prob&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;opt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="n"&gt;previous&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;st&lt;/span&gt;
+            &lt;span class="k"&gt;break&lt;/span&gt;
+    &lt;span class="c1"&gt;# Follow the backtrack till the first observation&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;V&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;opt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;insert&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;V&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="n"&gt;previous&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="s2"&gt;"prev"&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+        &lt;span class="n"&gt;previous&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;V&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="n"&gt;previous&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="s2"&gt;"prev"&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+        
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'The steps of states are '&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s1"&gt;' '&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;opt&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s1"&gt;' with highest probability of &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s1"&gt;'&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;max_prob&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;dptable&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;V&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="c1"&gt;# Print a table of steps from dictionary&lt;/span&gt;
+    &lt;span class="k"&gt;yield&lt;/span&gt; &lt;span class="s2"&gt;" "&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="si"&gt;%12d&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;V&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;state&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;V&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
+        &lt;span class="k"&gt;yield&lt;/span&gt; &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="si"&gt;%.7s&lt;/span&gt;&lt;span class="s2"&gt;: "&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;state&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s2"&gt;" "&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="si"&gt;%.7s&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="si"&gt;%f&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;state&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="s2"&gt;"prob"&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;V&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;viterbi&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="s1"&gt;'Normal'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'Cold'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'Dizzy'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;states&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;start_p&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;trans_p&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;emit_p&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+&lt;div class="output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
+&lt;pre&gt;           0            1            2
+Healthy: 0.30000 0.08400 0.00588
+Fever: 0.04000 0.02700 0.01512
+The steps of states are Healthy Healthy Fever with highest probability of 0.01512
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [ ]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt; 
 &lt;/pre&gt;&lt;/div&gt;
-
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-
 &lt;/div&gt;
 &lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var mathjaxscript = document.createElement('script');
@@ -1531,5 +1289,593 @@ l6SGjLskNWTcJakh4y5JDf0vZB9FlJ1A1boAAAAASUVORK5CYII=
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 &lt;/script&gt;
-</summary><category term="python"></category></entry><entry><title>first_post</title><link href="https://freeeebie.github.io/first_post.html" rel="alternate"></link><published>2014-12-13T18:32:00+09:00</published><updated>2014-12-13T18:32:00+09:00</updated><author><name>freeeebie</name></author><id>tag:freeeebie.github.io,2014-12-13:first_post.html</id><summary type="html">&lt;p&gt;Hello World from Pelican!&lt;/p&gt;
-</summary></entry></feed>
+</content><category term="ML"></category></entry><entry><title>BST node count</title><link href="https://freeeebie.github.io/bst-node-count.html" rel="alternate"></link><published>2016-10-02T14:39:10+09:00</published><updated>2016-10-02T14:39:10+09:00</updated><author><name>freeeebie</name></author><id>tag:freeeebie.github.io,2016-10-02:/bst-node-count.html</id><summary type="html">&lt;h1&gt;BST 에서 node 갯수 세기&lt;/h1&gt;
+&lt;p&gt;left/right sub tree 의 children 숫자가 미리 주어졌을 때, 입력된 node 보다 큰 수 or 작은 수의 갯수 구하기  &lt;/p&gt;
+&lt;h2&gt;입력 node 보다 작은 숫자 구하기&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;start root  &lt;/li&gt;
+&lt;li&gt;만약 입력 데이터보다 해당 노드의 숫자가 크다면(if input &amp;lt; node.value), 왼쪽 노드로 이동  &lt;/li&gt;
+&lt;li&gt;만약 입력 데이터보다 …&lt;/li&gt;&lt;/ol&gt;</summary><content type="html">&lt;h1&gt;BST 에서 node 갯수 세기&lt;/h1&gt;
+&lt;p&gt;left/right sub tree 의 children 숫자가 미리 주어졌을 때, 입력된 node 보다 큰 수 or 작은 수의 갯수 구하기  &lt;/p&gt;
+&lt;h2&gt;입력 node 보다 작은 숫자 구하기&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;start root  &lt;/li&gt;
+&lt;li&gt;만약 입력 데이터보다 해당 노드의 숫자가 크다면(if input &amp;lt; node.value), 왼쪽 노드로 이동  &lt;/li&gt;
+&lt;li&gt;만약 입력 데이터보다 해당 노드의 숫자가 작다면(if input &amp;gt;= node.value), count 변수에 해당 node 의 left sub tree 의 node 숫자 + 1(해당 node) 을 더하고, 오른쪽으로 이동.  &lt;/li&gt;
+&lt;li&gt;이동한 node 가 null 인 경우까지 반복  &lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;count_less&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;node&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;input&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;node&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;count&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;node&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;input&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;count&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;count_less&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;node&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;left&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;input&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;elif&lt;/span&gt; &lt;span class="n"&gt;node&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="nb"&gt;input&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;count&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;node&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;leftchildren&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;count_less&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;node&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;right&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;input&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;elif&lt;/span&gt; &lt;span class="n"&gt;node&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="nb"&gt;input&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;count&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;node&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;leftchildren&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;count&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;입력 node 보다 큰 숫자 구하기&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;start root &lt;/li&gt;
+&lt;li&gt;만약 입력 데이터보다 해당 노드의 숫자가 크다면(if input &amp;lt; node.value), count 변수에 해당 node 의 right sub tree 의 node 숫자 + 1(해당 node) 을 더하고, 왼쪽 자식으로 이동. &lt;/li&gt;
+&lt;li&gt;만약 입력 데이터보다 해당 노드의 숫자가 작다면(if input &amp;gt;= node.value), 오른쪽 자식으로 이동 &lt;/li&gt;
+&lt;li&gt;이동한 node 가 null 인 경우까지 반복 &lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;count_more&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;node&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;input&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;node&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;count&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;node&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="nb"&gt;input&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;count&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;count_more&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;node&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;right&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;input&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;elif&lt;/span&gt; &lt;span class="n"&gt;node&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;input&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;count&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;node&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;rightchildren&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;count_more&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;node&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;left&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;input&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;elif&lt;/span&gt; &lt;span class="n"&gt;node&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="nb"&gt;input&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;count&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;node&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;rightchildren&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;count&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;전체 코드&lt;br&gt;
+https://github.com/freeeebie/algorithm-study/blob/master/tree/count_less_greater_nodes.py&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;reference&lt;br&gt;
+https://www.careercup.com/question?id=5165570324430848&lt;/p&gt;</content><category term="algorithm"></category></entry><entry><title>Keyboard Shortcuts for Bash</title><link href="https://freeeebie.github.io/keyboard-shortcuts-for-bash.html" rel="alternate"></link><published>2016-10-02T14:33:33+09:00</published><updated>2016-10-02T14:33:33+09:00</updated><author><name>freeeebie</name></author><id>tag:freeeebie.github.io,2016-10-02:/keyboard-shortcuts-for-bash.html</id><summary type="html">&lt;h1&gt;Bash shell 단축키&lt;/h1&gt;
+&lt;p&gt;http://www.howtogeek.com/howto/ubuntu/keyboard-shortcuts-for-bash-command-shell-for-ubuntu-debian-suse-redhat-linux-etc/ 에서 발췌함  &lt;/p&gt;
+&lt;p&gt;Ctrl + A    Go to the beginning of the line you are currently typing on&lt;br&gt;
+Ctrl + E    Go to the end of the line you are currently typing on&lt;br&gt;
+Ctrl + L                Clears the Screen, similar to the clear command …&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Bash shell 단축키&lt;/h1&gt;
+&lt;p&gt;http://www.howtogeek.com/howto/ubuntu/keyboard-shortcuts-for-bash-command-shell-for-ubuntu-debian-suse-redhat-linux-etc/ 에서 발췌함  &lt;/p&gt;
+&lt;p&gt;Ctrl + A    Go to the beginning of the line you are currently typing on&lt;br&gt;
+Ctrl + E    Go to the end of the line you are currently typing on&lt;br&gt;
+Ctrl + L                Clears the Screen, similar to the clear command&lt;br&gt;
+Ctrl + U    Clears the line before the cursor position. If you are at the end of the line, clears the entire line.&lt;br&gt;
+Ctrl + H    Same as backspace&lt;br&gt;
+Ctrl + R    Let’s you search through previously used commands&lt;br&gt;
+Ctrl + C    Kill whatever you are running&lt;br&gt;
+Ctrl + D    Exit the current shell&lt;br&gt;
+Ctrl + Z    Puts whatever you are running into a suspended   background process. fg restores it.&lt;br&gt;
+Ctrl + W    Delete the word before the cursor&lt;br&gt;
+Ctrl + K    Clear the line after the cursor&lt;br&gt;
+Ctrl + T    Swap the last two characters before the cursor&lt;br&gt;
+Esc + T Swap the last two words before the cursor&lt;br&gt;
+Alt + F Move cursor forward one word on the current line&lt;br&gt;
+Alt + B Move cursor backward one word on the current line&lt;br&gt;
+Tab Auto-complete files and folder names  &lt;/p&gt;
+&lt;hr&gt;</content><category term="info"></category></entry><entry><title>Linear Regression</title><link href="https://freeeebie.github.io/linear-regression.html" rel="alternate"></link><published>2016-10-01T22:18:30+09:00</published><updated>2016-10-01T22:18:30+09:00</updated><author><name>freeeebie</name></author><id>tag:freeeebie.github.io,2016-10-01:/linear-regression.html</id><summary type="html">&lt;h1&gt;다항식 회귀&lt;/h1&gt;
+&lt;div class="math"&gt;$$ g(x_i | w_k, \cdots, w_1, w_0) = w_k(x_i)^k + \cdots + w_2(x_i)^2 + w_1(x_i) + w_0$$&lt;/div&gt;
+&lt;p&gt;&lt;br&gt;
+$ \overrightarrow{z_i}= [x_i \:\:(x_i)^2 \:\cdots\: (x_i)^k] $ 를 갖는 다변의 선형 회귀라고 여기고 푼다.  &lt;/p&gt;
+&lt;h1&gt;Model Selection&lt;/h1&gt;
+&lt;p&gt;정확도를 어떻게 측정. 최대로 잘 맞는지  &lt;/p&gt;
+&lt;h1&gt;overfitting&lt;/h1&gt;
+&lt;p&gt;모델에 비해 data 가 너무 적어 noise 까지 …&lt;/p&gt;&lt;script type='text/javascript'&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "left",
+        indent = "2em",
+        linebreak = "false";
+
+    if (true) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' &amp;&amp; location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {} }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</summary><content type="html">&lt;h1&gt;다항식 회귀&lt;/h1&gt;
+&lt;div class="math"&gt;$$ g(x_i | w_k, \cdots, w_1, w_0) = w_k(x_i)^k + \cdots + w_2(x_i)^2 + w_1(x_i) + w_0$$&lt;/div&gt;
+&lt;p&gt;&lt;br&gt;
+$ \overrightarrow{z_i}= [x_i \:\:(x_i)^2 \:\cdots\: (x_i)^k] $ 를 갖는 다변의 선형 회귀라고 여기고 푼다.  &lt;/p&gt;
+&lt;h1&gt;Model Selection&lt;/h1&gt;
+&lt;p&gt;정확도를 어떻게 측정. 최대로 잘 맞는지  &lt;/p&gt;
+&lt;h1&gt;overfitting&lt;/h1&gt;
+&lt;p&gt;모델에 비해 data 가 너무 적어 noise 까지 fitting 해버리는 현상  &lt;/p&gt;
+&lt;h1&gt;알고리즘 정확도 측정&lt;/h1&gt;
+&lt;p&gt;학습에 동원되지 않은 데이터로 에러 측정&lt;br&gt;
+K-folder Cross Validation (CV)  &lt;/p&gt;
+&lt;h2&gt;항상 지켜야 될 원칙&lt;/h2&gt;
+&lt;p&gt;훈련에 쓰지 않는 데이터로 에러 측정 &lt;/p&gt;
+&lt;h2&gt;Dimension의 저주&lt;/h2&gt;
+&lt;p&gt;각 데이터가 10개의 속성이 있을 때 $10^{10} \:?? $&lt;/p&gt;
+&lt;h1&gt;Feature mapping&lt;/h1&gt;
+&lt;div class="math"&gt;$$ \overrightarrow{z} = \phi(\overrightarrow{x}) $$&lt;/div&gt;
+&lt;p&gt;&lt;br&gt;
+&lt;/p&gt;
+&lt;div class="math"&gt;$$ \frac{1}{wt} = \phi(wt) \Rightarrow mpg = w_0 + w_1 \frac{1}{wt}$$&lt;/div&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "left",
+        indent = "2em",
+        linebreak = "false";
+
+    if (true) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' &amp;&amp; location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {} }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="'Machine&amp;nbsp"></category><category term="Learning'"></category></entry><entry><title>MLE</title><link href="https://freeeebie.github.io/mle.html" rel="alternate"></link><published>2016-09-18T15:51:26+09:00</published><updated>2016-09-18T15:51:26+09:00</updated><author><name>freeeebie</name></author><id>tag:freeeebie.github.io,2016-09-18:/mle.html</id><summary type="html">&lt;h1&gt;최우도 추정&lt;/h1&gt;
+&lt;p&gt;Maximum likelihood estimation&lt;br&gt;
+데이터들이 어떤 확률 분포에 가까운지 추정하는 방법 중 하나.  &lt;/p&gt;
+&lt;div class="math"&gt;$$D = {x_1, x_2,\cdots,x_N}$$&lt;/div&gt;
+&lt;p&gt;
+일 때, 
+데이터 집합의 정규분포의 위치와 모양을 결정 짓는 매개 변수 &lt;span class="math"&gt;\(\mu\)&lt;/span&gt; 와 &lt;span class="math"&gt;\(\sigma^2\)&lt;/span&gt; 를 구한다면,&lt;br&gt;
+우도  &lt;span class="math"&gt;\(L(D, \mu, \sigma)\)&lt;/span&gt;&lt;br&gt;
+여기에 로그를 취하면, &lt;span class="math"&gt;\(\mathcal{L}(D, \mu, \sigma)\)&lt;/span&gt;  &lt;/p&gt;
+&lt;p&gt;최우도 …&lt;/p&gt;&lt;script type='text/javascript'&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "left",
+        indent = "2em",
+        linebreak = "false";
+
+    if (true) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' &amp;&amp; location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {} }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</summary><content type="html">&lt;h1&gt;최우도 추정&lt;/h1&gt;
+&lt;p&gt;Maximum likelihood estimation&lt;br&gt;
+데이터들이 어떤 확률 분포에 가까운지 추정하는 방법 중 하나.  &lt;/p&gt;
+&lt;div class="math"&gt;$$D = {x_1, x_2,\cdots,x_N}$$&lt;/div&gt;
+&lt;p&gt;
+일 때, 
+데이터 집합의 정규분포의 위치와 모양을 결정 짓는 매개 변수 &lt;span class="math"&gt;\(\mu\)&lt;/span&gt; 와 &lt;span class="math"&gt;\(\sigma^2\)&lt;/span&gt; 를 구한다면,&lt;br&gt;
+우도  &lt;span class="math"&gt;\(L(D, \mu, \sigma)\)&lt;/span&gt;&lt;br&gt;
+여기에 로그를 취하면, &lt;span class="math"&gt;\(\mathcal{L}(D, \mu, \sigma)\)&lt;/span&gt;  &lt;/p&gt;
+&lt;p&gt;최우도 추정은 우도를 편미분하여 최대값을 구한다.&lt;br&gt;
+&lt;/p&gt;
+&lt;div class="math"&gt;$$ \hat\mu = \Sigma_i x^i/N \Leftrightarrow \partial L(D, \mu, \sigma)$$&lt;/div&gt;
+&lt;p&gt;&lt;br&gt;
+&lt;/p&gt;
+&lt;div class="math"&gt;$$ \hat\sigma^2 = \Sigma_i (x_i - \hat\mu)^2 / N \Leftrightarrow \partial \mathcal{L}(D, \mu, \sigma) $$&lt;/div&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "left",
+        indent = "2em",
+        linebreak = "false";
+
+    if (true) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' &amp;&amp; location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {} }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="math"></category></entry><entry><title>확률</title><link href="https://freeeebie.github.io/hwagryul.html" rel="alternate"></link><published>2016-09-17T00:27:19+09:00</published><updated>2016-09-17T00:27:19+09:00</updated><author><name>freeeebie</name></author><id>tag:freeeebie.github.io,2016-09-17:/hwagryul.html</id><summary type="html">&lt;h1&gt;확률분포&lt;/h1&gt;
+&lt;h2&gt;Random Variable(확률변수)&lt;/h2&gt;
+&lt;p&gt;정의  &lt;/p&gt;
+&lt;div class="math"&gt;$$ X:\Omega\Rightarrow R $$&lt;/div&gt;
+&lt;p&gt;&lt;br&gt;
+X: 함수&lt;/p&gt;
+&lt;p&gt;이산확률변수&lt;br&gt;
+&lt;span class="math"&gt;\(P(X=k)= P(\{w:X(w)=k\})\)&lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;Joint probability(결합확률)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;확률질량함수&lt;br&gt;
+이산데이터에 대하여 누적 확률  &lt;/li&gt;
+&lt;li&gt;누적분포함수 (CDF)&lt;br&gt;
+    확률값을 적분한 것. 1에 수렴 &lt;/li&gt;
+&lt;li&gt;확률밀도함수&lt;br&gt;
+누적분포를 미분한 것 &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Maginary probability(주변확률)&lt;/h2&gt;
+&lt;p&gt;두 변수중 한가지 확률변수 계산&lt;br&gt;
+왜  maginary 인가 …&lt;/p&gt;&lt;script type='text/javascript'&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "left",
+        indent = "2em",
+        linebreak = "false";
+
+    if (true) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' &amp;&amp; location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {} }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</summary><content type="html">&lt;h1&gt;확률분포&lt;/h1&gt;
+&lt;h2&gt;Random Variable(확률변수)&lt;/h2&gt;
+&lt;p&gt;정의  &lt;/p&gt;
+&lt;div class="math"&gt;$$ X:\Omega\Rightarrow R $$&lt;/div&gt;
+&lt;p&gt;&lt;br&gt;
+X: 함수&lt;/p&gt;
+&lt;p&gt;이산확률변수&lt;br&gt;
+&lt;span class="math"&gt;\(P(X=k)= P(\{w:X(w)=k\})\)&lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;Joint probability(결합확률)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;확률질량함수&lt;br&gt;
+이산데이터에 대하여 누적 확률  &lt;/li&gt;
+&lt;li&gt;누적분포함수 (CDF)&lt;br&gt;
+    확률값을 적분한 것. 1에 수렴 &lt;/li&gt;
+&lt;li&gt;확률밀도함수&lt;br&gt;
+누적분포를 미분한 것 &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Maginary probability(주변확률)&lt;/h2&gt;
+&lt;p&gt;두 변수중 한가지 확률변수 계산&lt;br&gt;
+왜  maginary 인가?? table 로 표현하면 주분에 위치하므로, &lt;/p&gt;
+&lt;h2&gt;Conditional PMF (조건부 확률)&lt;/h2&gt;
+&lt;div class="math"&gt;$$P_{Y|X} (y|x) =   $$&lt;/div&gt;
+&lt;div class="math"&gt;$${P_{XY}(x,y)} \over {P_X(x)} $$&lt;/div&gt;
+&lt;p&gt;random variable X의 값이 x라고 알려져 있을 때, Y가 y일 확률&lt;/p&gt;
+&lt;h3&gt;Product rule&lt;/h3&gt;
+&lt;p&gt;conditional PMF 의 정의로 구함&lt;br&gt;
+&lt;/p&gt;
+&lt;div class="math"&gt;$$P_{Y|X} (y|x) = P(y|x)P(x) = P(x|y)P(y)$$&lt;/div&gt;
+&lt;h2&gt;대표적 연속 확률 분포&lt;/h2&gt;
+&lt;h3&gt;정규분포&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;가우스 분포 &lt;/li&gt;
+&lt;li&gt;$ X \thicksim N(\mu, \sigma^2) $&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;PDF&lt;br&gt;
+&lt;div class="math"&gt;$$ f_X(x) = \frac {1}{\sqrt{2\pi\sigma^2}}exp[-\frac{(x-\mu)^2}{2\sigma^2}]  $$&lt;/div&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;span class="math"&gt;\(E[x] = \mu\)&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;span class="math"&gt;\(var[x] = \sigma^2\)&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;대표적 이산 확률 분포&lt;/h2&gt;
+&lt;h3&gt;베르누이 분포&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;PMF&lt;br&gt;
+&lt;div class="math"&gt;$$ P_X(x) = 
+\left\{ \begin{array}{rcl}
+         p &amp;amp; \mbox{if}
+         &amp;amp; x = 1 \\ 1-p &amp;amp; \mbox{if} &amp;amp; x = 0
+                \end{array}\right.
+$$&lt;/div&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;$E[X] = P $&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;$Var[X] = P(1-P) $ &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;이항분포&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Binomial Distribution &lt;/li&gt;
+&lt;li&gt;$ X \thicksim Binom(n,p) $&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;PMF&lt;br&gt;
+&lt;div class="math"&gt;$$ P_X(X) = 
+\left( \begin{array}{c} n \\ x \end{array} \right) p^x(1-p)^{n-x}
+$$&lt;/div&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;span class="math"&gt;\(E[x] = \Sigma E[x_i] = np\)&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;span class="math"&gt;\(Var[x] = \Sigma Var[X_i] = np(1-p)\)&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "left",
+        indent = "2em",
+        linebreak = "false";
+
+    if (true) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' &amp;&amp; location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {} }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term='"Math"'></category></entry><entry><title>MFCC</title><link href="https://freeeebie.github.io/mfcc.html" rel="alternate"></link><published>2016-09-11T19:16:07+09:00</published><updated>2016-09-11T19:16:07+09:00</updated><author><name>freeeebie</name></author><id>tag:freeeebie.github.io,2016-09-11:/mfcc.html</id><summary type="html">&lt;p&gt;음성 데이터의 특징 추출&lt;br&gt;
+성대의 떨림은 고유함.성도를 system H 라고 가정하여&lt;br&gt;
+이 시스템 H의 특징을 찾음.  &lt;/p&gt;
+&lt;p&gt;1 step&lt;br&gt;
+시그널을 일정 frame 단위로 나눔.&lt;br&gt;
+windowing 실행&lt;br&gt;
+2 step&lt;br&gt;
+해당 frame에 Fourier Transform을 실행하여 power spectrum 을 구함.&lt;br&gt;
+3 step&lt;br&gt;
+mel filter bank 적용&lt;br&gt;
+4 step&lt;br&gt;
+log 적용&lt;br&gt;
+5 step&lt;br&gt;
+DCT …&lt;/p&gt;</summary><content type="html">&lt;p&gt;음성 데이터의 특징 추출&lt;br&gt;
+성대의 떨림은 고유함.성도를 system H 라고 가정하여&lt;br&gt;
+이 시스템 H의 특징을 찾음.  &lt;/p&gt;
+&lt;p&gt;1 step&lt;br&gt;
+시그널을 일정 frame 단위로 나눔.&lt;br&gt;
+windowing 실행&lt;br&gt;
+2 step&lt;br&gt;
+해당 frame에 Fourier Transform을 실행하여 power spectrum 을 구함.&lt;br&gt;
+3 step&lt;br&gt;
+mel filter bank 적용&lt;br&gt;
+4 step&lt;br&gt;
+log 적용&lt;br&gt;
+5 step&lt;br&gt;
+DCT 실행&lt;br&gt;
+6 step&lt;br&gt;
+liftering 실행  &lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;reference&lt;br&gt;
+https://en.wikipedia.org/wiki/Mel-frequency_cepstrum&lt;br&gt;
+http://practicalcryptography.com/miscellaneous/machine-learning/guide-mel-frequency-cepstral-coefficients-mfccs/  &lt;/p&gt;</content><category term='"Machine&amp;nbsp'></category><category term='Learning"'></category></entry></feed>
